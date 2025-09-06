@@ -1,0 +1,272 @@
+/* Quantum Security System Styles */
+:root {
+    --quantum-primary: #00ffff;
+    --quantum-secondary: #0066ff;
+    --quantum-danger: #ff3366;
+    --quantum-warning: #ffaa00;
+    --quantum-success: #00ff66;
+    --quantum-dark: #0a0a0a;
+    --quantum-light: #f0f0f0;
+    --quantum-glow: 0 0 20px var(--quantum-primary);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', monospace;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    color: var(--quantum-light);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.quantum-header {
+    background: rgba(0, 255, 255, 0.1);
+    border-bottom: 2px solid var(--quantum-primary);
+    padding: 1rem;
+    text-align: center;
+    box-shadow: var(--quantum-glow);
+    position: relative;
+}
+
+.quantum-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, var(--quantum-primary), transparent);
+    opacity: 0.1;
+    animation: scanline 3s infinite;
+}
+
+@keyframes scanline {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.quantum-title {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--quantum-primary);
+    text-shadow: 0 0 10px var(--quantum-primary);
+    margin: 0;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px var(--quantum-primary); }
+    to { text-shadow: 0 0 20px var(--quantum-primary), 0 0 30px var(--quantum-primary); }
+}
+
+.security-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.security-panel {
+    background: rgba(0, 255, 255, 0.05);
+    border: 1px solid var(--quantum-primary);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.security-panel::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(transparent, var(--quantum-primary), transparent);
+    animation: rotate 4s linear infinite;
+    opacity: 0.1;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.panel-content {
+    position: relative;
+    z-index: 1;
+}
+
+.panel-title {
+    color: var(--quantum-primary);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--quantum-primary);
+    padding-bottom: 0.5rem;
+}
+
+.status-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    animation: pulse 1.5s infinite;
+}
+
+.status-active { background: var(--quantum-success); }
+.status-warning { background: var(--quantum-warning); }
+.status-critical { background: var(--quantum-danger); }
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.threat-list {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 5px;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.threat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    background: rgba(0, 255, 255, 0.1);
+    border-radius: 3px;
+    border-left: 3px solid var(--quantum-primary);
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.threat-severity {
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.severity-low { background: var(--quantum-success); color: black; }
+.severity-medium { background: var(--quantum-warning); color: black; }
+.severity-high { background: var(--quantum-danger); }
+.severity-critical { background: var(--quantum-danger); animation: blink 1s infinite; }
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.5; }
+}
+
+.quantum-button {
+    background: linear-gradient(45deg, var(--quantum-primary), var(--quantum-secondary));
+    border: none;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+}
+
+.quantum-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 255, 255, 0.5);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--quantum-primary);
+    display: block;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.protection-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.protection-item {
+    padding: 0.5rem;
+    background: rgba(0, 255, 255, 0.1);
+    border-radius: 3px;
+    border-left: 3px solid var(--quantum-success);
+    font-size: 0.9rem;
+}
+
+.quantum-logo {
+    font-size: 3rem;
+    color: var(--quantum-primary);
+    animation: rotate 10s linear infinite;
+}
+
+.matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.1;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .security-dashboard {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+    
+    .quantum-title {
+        font-size: 1.8rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
