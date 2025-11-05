@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Blockchain Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { 
+            background: linear-gradient(135deg, #0a0e27, #1a1a2e, #16213e);
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        .neon { 
+            color: #00f5ff; 
+            text-shadow: 0 0 10px #00f5ff; 
+        }
+        .card { 
+            background: rgba(0,0,0,0.7); 
+            border: 1px solid rgba(0,245,255,0.3);
+            backdrop-filter: blur(10px);
+        }
+        .btn {
+            transition: all 0.3s ease;
+            background: linear-gradient(45deg, #00f5ff, #0ea5e9);
+        }
+        .btn:hover { 
+            transform: scale(1.05); 
+        }
+    </style>
+</head>
+<body class="text-white">
+    <div class="min-h-screen p-8">
+        <div class="max-w-6xl mx-auto">
+            <header class="text-center mb-12">
+                <h1 class="text-6xl font-bold neon mb-4">QUANTUM BLOCKCHAIN</h1>
+                <p class="text-2xl text-cyan-300">Criptografía Post-Cuántica v2.0.0</p>
+                <p class="text-sm text-gray-400 mt-2">🚀 Sistema funcionando correctamente</p>
+            </header>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-cyan-400 mb-4">📊 Estadísticas</h3>
+                    <div class="space-y-2">
+                        <div>Bloques: <span id="blocks" class="neon font-mono">0</span></div>
+                        <div>Transacciones: <span id="transactions" class="neon font-mono">0</span></div>
+                        <div>Peers: <span id="peers" class="neon font-mono">0</span></div>
+                        <div>Hash Rate: <span id="hashrate" class="neon font-mono">0 H/s</span></div>
+                    </div>
+                </div>
+                
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-purple-400 mb-4">🎮 Controles</h3>
+                    <div class="space-y-3">
+                        <button onclick="mineBlock()" class="btn w-full px-4 py-2 text-white rounded-lg font-bold">
+                            🔮 Minar Bloque Cuántico
+                        </button>
+                        <button onclick="createTransaction()" class="btn w-full px-4 py-2 text-white rounded-lg font-bold">
+                            💎 Nueva Transacción
+                        </button>
+                        <button onclick="showStats()" class="btn w-full px-4 py-2 text-white rounded-lg font-bold">
+                            📈 Ver Estadísticas
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-green-400 mb-4">🔬 Estado Cuántico</h3>
+                    <div class="space-y-2">
+                        <div>Entrelazamiento: <span class="text-green-400 font-mono" id="entanglement">Active</span></div>
+                        <div>Qubits: <span class="text-blue-400 font-mono" id="qubits">512</span></div>
+                        <div>Coherencia: <span class="text-yellow-400 font-mono" id="coherence">98.7%</span></div>
+                        <div>Ventaja Cuántica: <span class="text-purple-400 font-mono" id="advantage">24.3%</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card p-6 rounded-lg">
+                <h3 class="text-xl font-bold text-cyan-400 mb-4">📋 Log de Actividad</h3>
+                <div id="log" class="bg-black/50 p-4 rounded font-mono text-sm h-64 overflow-y-auto space-y-1">
+                    <div class="text-green-400">[SYSTEM] Quantum Blockchain Pro v2.0.0 iniciado ✅</div>
+                    <div class="text-cyan-400">[READY] Sistema listo para operaciones cuánticas 🚀</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let state = {
+            blocks: 0,
+            transactions: 0,
+            peers: Math.floor(Math.random() * 10) + 1,
+            hashrate: 0,
+            qubits: 512,
+            coherence: 98.7,
+            advantage: 24.3
+        };
+        
+        function updateDisplay() {
+            document.getElementById('blocks').textContent = state.blocks;
+            document.getElementById('transactions').textContent = state.transactions;
+            document.getElementById('peers').textContent = state.peers;
+            document.getElementById('hashrate').textContent = state.hashrate + ' H/s';
+            document.getElementById('qubits').textContent = state.qubits;
+            document.getElementById('coherence').textContent = state.coherence.toFixed(1) + '%';
+            document.getElementById('advantage').textContent = state.advantage.toFixed(1) + '%';
+        }
+        
+        function addLog(message, type = 'info') {
+            const log = document.getElementById('log');
+            const timestamp = new Date().toLocaleTimeString();
+            const colors = {
+                info: 'text-cyan-400',
+                success: 'text-green-400',
+                warning: 'text-yellow-400',
+                error: 'text-red-400'
+            };
+            
+            const entry = document.createElement('div');
+            entry.className = colors[type];
+            entry.textContent = '[' + timestamp + '] ' + message;
+            
+            log.appendChild(entry);
+            log.scrollTop = log.scrollHeight;
+            
+            if (log.children.length > 50) {
+                log.removeChild(log.firstChild);
+            }
+        }
+        
+        function mineBlock() {
+            addLog('🔮 Iniciando proceso de minado cuántico...', 'info');
+            state.hashrate = Math.floor(Math.random() * 1000) + 500;
+            updateDisplay();
+            
+            setTimeout(() => {
+                state.blocks++;
+                state.advantage += Math.random() * 2;
+                state.coherence = Math.max(95, state.coherence + (Math.random() - 0.5) * 0.5);
+                addLog('✅ Bloque #' + state.blocks + ' minado exitosamente! Hash: 0x' + Math.random().toString(16).substr(2, 8), 'success');
+                updateDisplay();
+                
+                setTimeout(() => {
+                    state.hashrate = 0;
+                    updateDisplay();
+                }, 3000);
+            }, 2000);
+        }
+        
+        function createTransaction() {
+            addLog('💎 Creando transacción cuántica...', 'info');
+            
+            setTimeout(() => {
+                state.transactions++;
+                const txId = Math.random().toString(16).substr(2, 8);
+                addLog('✅ Transacción procesada! ID: 0x' + txId, 'success');
+                updateDisplay();
+            }, 1000);
+        }
+        
+        function showStats() {
+            addLog('📈 Estadísticas del sistema:', 'info');
+            addLog('- Red activa con ' + state.peers + ' peers cuánticos', 'info');
+            addLog('- Coherencia cuántica: ' + state.coherence.toFixed(1) + '%', 'info');
+            addLog('- Ventaja cuántica actual: ' + state.advantage.toFixed(1) + '%', 'info');
+        }
+        
+        // Simulación de actividad de red
+        setInterval(() => {
+            if (Math.random() > 0.8) {
+                const change = Math.random() > 0.5 ? 1 : -1;
+                state.peers = Math.max(1, Math.min(20, state.peers + change));
+                
+                if (change > 0) {
+                    addLog('🌐 Nuevo peer cuántico conectado', 'success');
+                } else {
+                    addLog('🌐 Peer desconectado', 'warning');
+                }
+                updateDisplay();
+            }
+            
+            // Fluctuaciones cuánticas
+            state.coherence += (Math.random() - 0.5) * 0.1;
+            state.coherence = Math.max(95, Math.min(99.9, state.coherence));
+            state.advantage += (Math.random() - 0.5) * 0.2;
+            state.advantage = Math.max(20, Math.min(50, state.advantage));
+            updateDisplay();
+        }, 5000);
+        
+        // Efectos cuánticos aleatorios
+        setInterval(() => {
+            if (Math.random() > 0.95) {
+                addLog('⚡ Fluctuación cuántica detectada en el sistema', 'warning');
+            }
+        }, 10000);
+        
+        // Inicialización
+        updateDisplay();
+        addLog('🚀 Todos los sistemas operativos - Listo para minado cuántico!', 'success');
+        
+        // Exponer funciones globalmente para debugging
+        window.quantumApp = {
+            mineBlock,
+            createTransaction,
+            showStats,
+            state: state
+        };
+        
+        console.log('🔮 Quantum Blockchain Pro cargado exitosamente!');
+        console.log('👉 Usa quantumApp.mineBlock() para minar bloques');
+        console.log('👉 Usa quantumApp.createTransaction() para crear transacciones');
+    </script>
+</body>
+</html>

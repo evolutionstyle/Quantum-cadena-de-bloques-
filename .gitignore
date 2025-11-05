@@ -1,0 +1,57 @@
+# Quantum Blockchain - Commercial .gitignore
+# Configured for public repository and commercial visibility
+
+# ========================================
+# DEVELOPMENT ENVIRONMENT
+# ========================================
+
+# Only hide actual production secrets, keep examples
+.env.local
+.env.production
+.env.staging
+
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# OS generated files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Cache directories
+.cache/
+.next/
+.nuxt/
+
+# Build outputs
+/dist/
+/build/
+
+# Test coverage
+coverage/
+*.lcov
+
+# Logs
+*.log
+logs/
+
+# ========================================
+# COMMERCIAL STRATEGY - MAXIMUM VISIBILITY
+# ========================================
+
+# This .gitignore is intentionally minimal to showcase:
+# 1. Technical capabilities to investors
+# 2. Product features to customers  
+# 3. Code quality to developers
+# 4. Innovation to the market
+
+# We WANT people to see our competitive advantages!
