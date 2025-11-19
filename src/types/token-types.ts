@@ -255,6 +255,40 @@ export interface AuctionBid {
 }
 
 // ===== GOVERNANCE CUÁNTICA =====
+export interface GovernanceProposal {
+  id: string
+  title: string
+  description: string
+  proposer: string
+  category: string
+  votingStart: number
+  votingEnd: number
+  votesFor: bigint
+  votesAgainst: bigint
+  status: 'pending' | 'active' | 'passed' | 'rejected' | 'executed'
+  executionPayload?: any
+}
+
+export interface Vote {
+  proposalId: string
+  voter: string
+  support: boolean
+  weight: bigint
+  timestamp: number
+  reason?: string
+}
+
+export interface LiquidityPool {
+  id: string
+  token0: string
+  token1: string
+  reserve0: bigint
+  reserve1: bigint
+  totalLiquidity: bigint
+  fee: number
+  providers: Map<string, bigint>
+}
+
 export interface QuantumProposal {
   id: string
   title: string
