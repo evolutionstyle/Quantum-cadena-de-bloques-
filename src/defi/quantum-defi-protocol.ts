@@ -8,8 +8,7 @@ import {
   YieldFarm, 
   GovernanceProposal, 
   Vote,
-  LiquidityPool,
-  DeFiReward
+  LiquidityPool
 } from '../types/token-types'
 import { SimpleHash } from '../utils/simple-hash'
 
@@ -53,11 +52,19 @@ export class QuantumDeFiProtocol {
       id: 'qc_basic',
       name: 'Quantum Coin Staking',
       token: 'QC',
-      totalStaked: 0,
+      tokenId: 'QC',
+      totalStaked: BigInt(0),
+      minimumStake: BigInt(10),
       rewardRate: 0.12, // 12% APY
-      lockPeriod: 0, // Sin lock
+      apy: 12,
+      lockupPeriod: 0, // Sin lock
+      lockPeriod: 0,
       minStake: 10,
       maxStake: 1000000,
+      maxStakers: 10000,
+      currentStakers: 0,
+      coherenceBonus: 0.05,
+      quantumMultiplier: 1.0,
       active: true,
       createdAt: Date.now(),
       lastRewardUpdate: Date.now()
@@ -68,11 +75,19 @@ export class QuantumDeFiProtocol {
       id: 'qc_locked',
       name: 'Quantum Coin Locked Staking',
       token: 'QC',
-      totalStaked: 0,
+      tokenId: 'QC',
+      totalStaked: BigInt(0),
+      minimumStake: BigInt(100),
       rewardRate: 0.25, // 25% APY
-      lockPeriod: 2592000000, // 30 días
+      apy: 25,
+      lockupPeriod: 2592000000, // 30 días
+      lockPeriod: 2592000000,
       minStake: 100,
       maxStake: 1000000,
+      maxStakers: 5000,
+      currentStakers: 0,
+      coherenceBonus: 0.1,
+      quantumMultiplier: 1.5,
       active: true,
       createdAt: Date.now(),
       lastRewardUpdate: Date.now()
@@ -82,13 +97,17 @@ export class QuantumDeFiProtocol {
     this.yieldFarms.set('qc_eth_farm', {
       id: 'qc_eth_farm',
       name: 'QC-ETH Liquidity Farm',
-      poolId: 'qc_eth_lp',
-      rewardToken: 'QC',
-      totalLiquidity: 0,
+      lpTokenId: 'qc_eth_lp',
+      rewardTokenId: 'QC',
+      apy: 35,
+      totalLocked: BigInt(0),
+      totalLiquidity: BigInt(0),
+      rewardPerSecond: BigInt(0),
       rewardRate: 0.35, // 35% APY
       multiplier: 2.0,
+      quantumBoost: 1.0,
+      farmingPeriod: 0,
       active: true,
-      createdAt: Date.now(),
       lastRewardUpdate: Date.now()
     })
 
@@ -141,25 +160,25 @@ export class QuantumDeFiProtocol {
     if (!existingStake) {
       existingStake = {
         poolId,
-        amount: 0,
-        rewardDebt: 0,
+        amount: BigInt(0),
+        rewardDebt: BigInt(0),
         stakedAt: Date.now(),
-        unlocksAt: pool.lockPeriod > 0 ? Date.now() + pool.lockPeriod : 0,
-        pendingRewards: 0
+        unlocksAt: pool.lockPeriod && pool.lockPeriod > 0 ? Date.now() + pool.lockPeriod : 0,
+        pendingRewards: BigInt(0)
       }
       userStakes.push(existingStake)
     }
 
-    existingStake.amount += amount
-    existingStake.rewardDebt = (existingStake.amount * pool.rewardRate) / 100
-    existingStake.pendingRewards += pendingRewards
+    existingStake.amount += BigInt(amount)
+    existingStake.rewardDebt = BigInt(Math.floor(Number(existingStake.amount) * (pool.rewardRate || 0) / 100))
+    existingStake.pendingRewards += BigInt(pendingRewards)
 
     // Actualizar pool
-    pool.totalStaked += amount
+    pool.totalStaked += BigInt(amount)
     pool.lastRewardUpdate = Date.now()
 
     // Actualizar estadísticas del protocolo
-    this.protocolStats.totalValueLocked += amount
+    this.protocolStats.totalValueLocked += BigInt(amount)
     this.protocolStats.totalStakers = new Set(Array.from(this.userStakes.keys())).size
 
     const result: StakeResult = {
@@ -207,20 +226,20 @@ export class QuantumDeFiProtocol {
     const pendingRewards = this.calculatePendingRewards(userStake, pool)
 
     // Aplicar fee por unstake temprano si aplica
-    let fee = 0
-    if (pool.lockPeriod > 0 && Date.now() - userStake.stakedAt < pool.lockPeriod / 2) {
-      fee = amount * 0.05 // 5% fee por unstake temprano
+    let fee = BigInt(0)
+    if (pool.lockPeriod && pool.lockPeriod > 0 && Date.now() - userStake.stakedAt < pool.lockPeriod / 2) {
+      fee = BigInt(Math.floor(amount * 0.05)) // 5% fee por unstake temprano
     }
 
-    const amountAfterFee = amount - fee
+    const amountAfterFee = BigInt(amount) - fee
 
     // Actualizar stake del usuario
-    userStake.amount -= amount
-    userStake.rewardDebt = (userStake.amount * pool.rewardRate) / 100
-    userStake.pendingRewards += pendingRewards
+    userStake.amount -= BigInt(amount)
+    userStake.rewardDebt = BigInt(Math.floor(Number(userStake.amount) * (pool.rewardRate || 0) / 100))
+    userStake.pendingRewards += BigInt(pendingRewards)
 
     // Actualizar pool
-    pool.totalStaked -= amount
+    pool.totalStaked -= BigInt(amount)
 
     // Actualizar estadísticas del protocolo
     this.protocolStats.totalValueLocked -= amount

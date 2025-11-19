@@ -235,7 +235,7 @@ export class QuantumMedicalAnalyzer {
   /**
    * 🔬 Simular interacción medicamento-virus
    */
-  public async simulatedrug​VirusInteraction(drugId: string, virusId: string): Promise<any> {
+  public async simulateDrugVirusInteraction(drugId: string, virusId: string): Promise<any> {
     console.log(`🔬 Simulando interacción medicamento-virus: ${drugId} vs ${virusId}`)
 
     const drug = this.drugCandidates.get(drugId)
@@ -680,4 +680,4 @@ export class QuantumMedicalAnalyzer {
   }
 }
 
-export { MolecularStructure, VirusAnalysis, DrugCandidate, QuantumState }
+export type { MolecularStructure, VirusAnalysis, DrugCandidate, QuantumState }

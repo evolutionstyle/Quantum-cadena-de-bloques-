@@ -171,16 +171,23 @@ export interface FaucetClaim {
 export interface StakingPool {
   id: string
   name: string
+  token?: string          // Token ID (compatibilidad legacy)
   tokenId: string
   apy: number
+  rewardRate?: number     // Tasa de recompensa (compatibilidad)
   minimumStake: bigint
+  minStake?: number       // Versión numérica (compatibilidad)
+  maxStake?: number       // Stake máximo (compatibilidad)
   lockupPeriod: number
+  lockPeriod?: number     // Alias para lockupPeriod
   totalStaked: bigint
   maxStakers: number
   currentStakers: number
   coherenceBonus: number
   quantumMultiplier: number
   active: boolean
+  createdAt?: number      // Timestamp de creación
+  lastRewardUpdate?: number // Última actualización de recompensas
 }
 
 export interface StakingPosition {
@@ -201,11 +208,15 @@ export interface YieldFarm {
   lpTokenId: string
   rewardTokenId: string
   apy: number
+  rewardRate?: number        // Tasa de recompensa por segundo
+  multiplier?: number        // Multiplicador de recompensas
   totalLocked: bigint
+  totalLiquidity?: bigint    // Total de liquidez (alias)
   rewardPerSecond: bigint
   quantumBoost: number
   farmingPeriod: number
   active: boolean
+  lastRewardUpdate?: number  // Última actualización
 }
 
 // ===== MARKETPLACE =====
@@ -255,6 +266,43 @@ export interface AuctionBid {
 }
 
 // ===== GOVERNANCE CUÁNTICA =====
+export interface GovernanceProposal {
+  id: string
+  title: string
+  description: string
+  proposer: string
+  category: string
+  votingStart: number
+  votingEnd: number
+  endsAt?: number           // Alias para votingEnd
+  votesFor: bigint
+  votesAgainst: bigint
+  status: 'pending' | 'active' | 'passed' | 'rejected' | 'executed'
+  executed?: boolean        // Si la propuesta fue ejecutada
+  executionPayload?: any
+}
+
+export interface Vote {
+  proposalId: string
+  voter: string
+  support: boolean
+  weight: bigint
+  timestamp: number
+  transactionHash?: string  // Hash de la transacción
+  reason?: string
+}
+
+export interface LiquidityPool {
+  id: string
+  token0: string
+  token1: string
+  reserve0: bigint
+  reserve1: bigint
+  totalLiquidity: bigint
+  fee: number
+  providers: Map<string, bigint>
+}
+
 export interface QuantumProposal {
   id: string
   title: string
@@ -387,6 +435,7 @@ export interface TradeEvent {
   buyer?: string
   price: bigint
   priceQC?: number        // Precio en QC para compatibilidad
+  sellerReceives?: bigint // Cantidad que recibe el vendedor
   listingId?: string      // ID del listing relacionado
   tokenId: string
   timestamp: number

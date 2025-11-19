@@ -706,7 +706,7 @@ export class QuantumResearchHub {
   }
 }
 
-export { 
+export type { 
   ResearchProject, 
   CrossChainProtection, 
   PandemicResponse, 

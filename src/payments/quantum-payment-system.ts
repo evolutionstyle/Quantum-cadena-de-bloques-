@@ -1050,7 +1050,7 @@ class FraudDetectionSystem {
   }
 }
 
-export {
+export type {
   PaymentMethod,
   PaymentTransaction,
   TokenPurchaseRequest,

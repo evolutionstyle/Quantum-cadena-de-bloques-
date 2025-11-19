@@ -818,7 +818,7 @@ class QuantumAlertSystem {
   }
 }
 
-export { 
+export type { 
   QuantumThreat, 
   BlockchainVulnerability, 
   QuantumDefenseStrategy, 

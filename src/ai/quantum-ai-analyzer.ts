@@ -75,6 +75,16 @@ export class QuantumAIAnalyzer {
   }
 
   /**
+   * 🚀 Inicializar el analizador
+   */
+  public async initialize(): Promise<void> {
+    console.log('🔧 Inicializando Quantum AI Analyzer...')
+    // Cargar modelos de IA si es necesario
+    await this.aiModel.initialize()
+    console.log('✅ Quantum AI Analyzer listo')
+  }
+
+  /**
    * 📋 Inicializar reglas de análisis
    */
   private initializeRules(): void {
@@ -618,6 +628,13 @@ class QuantumAIModel {
     this.initializeKnowledge()
   }
 
+  public async initialize(): Promise<void> {
+    console.log('🧠 Inicializando modelo de IA cuántica...')
+    // Aquí se cargarían modelos pre-entrenados si existieran
+    await new Promise(resolve => setTimeout(resolve, 100))
+    console.log('✅ Modelo de IA cuántica listo')
+  }
+
   private initializeKnowledge(): void {
     // Patrones de código cuántico peligrosos
     this.patterns.set('quantum_antipatterns', [
@@ -692,4 +709,4 @@ interface TrendAnalysis {
   recommendation: string
 }
 
-export { AnalysisRule, AnalysisResult, FileAnalysis, CodeMetrics, AIRecommendation, AnalysisReport }
+export type { AnalysisRule, AnalysisResult, FileAnalysis, CodeMetrics, AIRecommendation, AnalysisReport }
