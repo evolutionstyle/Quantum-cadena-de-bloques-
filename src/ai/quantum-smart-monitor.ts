@@ -896,7 +896,7 @@ interface MonitoringDashboard {
   performance: any
 }
 
-export { 
+export type { 
   MonitoringMetric, 
   Alert, 
   AnomalyDetection, 

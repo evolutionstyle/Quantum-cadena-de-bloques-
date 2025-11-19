@@ -1079,4 +1079,4 @@ if (typeof window !== 'undefined') {
   }
 }
 
-export { DashboardWidget, DashboardTheme }
+export type { DashboardWidget, DashboardTheme }

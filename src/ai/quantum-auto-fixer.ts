@@ -65,6 +65,28 @@ export class QuantumAutoFixer {
   }
 
   /**
+   * 🔒 Establecer modo de seguridad
+   */
+  public setSafetyMode(enabled: boolean): void {
+    this.safetyMode = enabled
+    console.log(`🔒 Modo de seguridad: ${enabled ? 'ACTIVADO' : 'DESACTIVADO'}`)
+  }
+
+  /**
+   * 🧠 Establecer modo de aprendizaje
+   */
+  public setLearningMode(enabled: boolean): void {
+    console.log(`🧠 Modo de aprendizaje: ${enabled ? 'ACTIVADO' : 'DESACTIVADO'}`)
+  }
+
+  /**
+   * 📊 Obtener modo de seguridad
+   */
+  public getSafetyMode(): boolean {
+    return this.safetyMode
+  }
+
+  /**
    * 🔧 Inicializar estrategias de corrección
    */
   private initializeStrategies(): void {
@@ -791,4 +813,4 @@ interface FixVerification {
   overallImprovement: boolean
 }
 
-export { FixStrategy, FixResult, FixChange, AutoFixSession, AutoFixResult }
+export type { FixStrategy, FixResult, FixChange, AutoFixSession, AutoFixResult }

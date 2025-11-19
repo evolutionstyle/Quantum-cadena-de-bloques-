@@ -8,8 +8,7 @@ import {
   YieldFarm, 
   GovernanceProposal, 
   Vote,
-  LiquidityPool,
-  DeFiReward
+  LiquidityPool
 } from '../types/token-types'
 import { SimpleHash } from '../utils/simple-hash'
 

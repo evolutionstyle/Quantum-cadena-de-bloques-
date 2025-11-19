@@ -171,16 +171,23 @@ export interface FaucetClaim {
 export interface StakingPool {
   id: string
   name: string
+  token?: string          // Token ID (compatibilidad legacy)
   tokenId: string
   apy: number
+  rewardRate?: number     // Tasa de recompensa (compatibilidad)
   minimumStake: bigint
+  minStake?: number       // Versión numérica (compatibilidad)
+  maxStake?: number       // Stake máximo (compatibilidad)
   lockupPeriod: number
+  lockPeriod?: number     // Alias para lockupPeriod
   totalStaked: bigint
   maxStakers: number
   currentStakers: number
   coherenceBonus: number
   quantumMultiplier: number
   active: boolean
+  createdAt?: number      // Timestamp de creación
+  lastRewardUpdate?: number // Última actualización de recompensas
 }
 
 export interface StakingPosition {

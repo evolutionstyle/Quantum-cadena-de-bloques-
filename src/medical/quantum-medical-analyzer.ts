@@ -680,4 +680,4 @@ export class QuantumMedicalAnalyzer {
   }
 }
 
-export { MolecularStructure, VirusAnalysis, DrugCandidate, QuantumState }
+export type { MolecularStructure, VirusAnalysis, DrugCandidate, QuantumState }
