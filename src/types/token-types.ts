@@ -208,11 +208,15 @@ export interface YieldFarm {
   lpTokenId: string
   rewardTokenId: string
   apy: number
+  rewardRate?: number        // Tasa de recompensa por segundo
+  multiplier?: number        // Multiplicador de recompensas
   totalLocked: bigint
+  totalLiquidity?: bigint    // Total de liquidez (alias)
   rewardPerSecond: bigint
   quantumBoost: number
   farmingPeriod: number
   active: boolean
+  lastRewardUpdate?: number  // Última actualización
 }
 
 // ===== MARKETPLACE =====
@@ -270,9 +274,11 @@ export interface GovernanceProposal {
   category: string
   votingStart: number
   votingEnd: number
+  endsAt?: number           // Alias para votingEnd
   votesFor: bigint
   votesAgainst: bigint
   status: 'pending' | 'active' | 'passed' | 'rejected' | 'executed'
+  executed?: boolean        // Si la propuesta fue ejecutada
   executionPayload?: any
 }
 
@@ -282,6 +288,7 @@ export interface Vote {
   support: boolean
   weight: bigint
   timestamp: number
+  transactionHash?: string  // Hash de la transacción
   reason?: string
 }
 
@@ -428,6 +435,7 @@ export interface TradeEvent {
   buyer?: string
   price: bigint
   priceQC?: number        // Precio en QC para compatibilidad
+  sellerReceives?: bigint // Cantidad que recibe el vendedor
   listingId?: string      // ID del listing relacionado
   tokenId: string
   timestamp: number
