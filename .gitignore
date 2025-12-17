@@ -66,6 +66,26 @@ tmp/
 backup/
 
 # ========================================
+# ARCHIVOS DE PRUEBA Y DESARROLLO
+# ========================================
+test.html
+simple.html
+*-test.html
+*-backup.html
+*-old.html
+*.bak
+
+# ========================================
+# ARCHIVOS INNECESARIOS EN ASSETS
+# ========================================
+assets/images/*.lnk
+assets/images/*.jpeg
+assets/images/*.jpg
+assets/images/2024*
+assets/images/Messenger_*
+# Mantener solo PNG oficial: quantum-token-logo.png
+
+# ========================================
 # ARCHIVOS DE DESARROLLO
 # ========================================
 *.code-workspace
