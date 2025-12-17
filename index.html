@@ -1,135 +1,1257 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quantum Blockchain - Redirecting...</title>
-  <meta http-equiv="refresh" content="0; url=quantum-pro.html">
-  <script>window.location.href = 'quantum-pro.html';</script>
-  <link rel="icon" type="image/svg+xml" href="assets/images/quantum-token-logo.svg">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    body {
-      background: linear-gradient(135deg, #0a0e27 0%, #1E3A5F 50%, #16213e 100%);
-      min-height: 100vh;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Blockchain Pro - Enterprise Platform</title>
+    <link rel="icon" type="image/png" href="assets/images/quantum-token-logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1E3A5F 50%, #16213e 100%);
+            background-attachment: fixed;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(30, 58, 95, 0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #FF8C00, #00FFFF);
+            border-radius: 5px;
+        }
+
+        /* Animated Background Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #00FFFF;
+            border-radius: 50%;
+            animation: float 15s infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
+            100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
+        }
+
+        /* Glass Card Effect */
+        .glass-card {
+            background: rgba(30, 58, 95, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .glass-card:hover::before {
+            left: 100%;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 140, 0, 0.5);
+            box-shadow: 0 8px 32px rgba(255, 140, 0, 0.2), 0 0 60px rgba(0, 255, 255, 0.1);
+            transform: translateY(-4px);
+        }
+
+        /* Header Styles */
+        .header {
+            position: relative;
+            z-index: 10;
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            filter: drop-shadow(0 0 20px #00FFFF);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #FF8C00 0%, #00FFFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        /* Stat Card */
+        .stat-card {
+            position: relative;
+            padding: 1.5rem;
+        }
+
+        .stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0.5rem 0;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Button Styles */
+        .btn-primary {
+            background: linear-gradient(135deg, #FF8C00, #00FFFF);
+            border: none;
+            padding: 0.875rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(255, 140, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(0, 255, 255, 0.1);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            padding: 0.875rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: #00FFFF;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 255, 255, 0.2);
+            border-color: #00FFFF;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+        }
+
+        /* Chart Container */
+        .chart-container {
+            position: relative;
+            height: 300px;
+            padding: 1rem;
+        }
+
+        /* Activity Feed */
+        .activity-item {
+            padding: 1rem;
+            border-left: 3px solid transparent;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .activity-item:hover {
+            background: rgba(0, 255, 255, 0.05);
+            border-left-color: #00FFFF;
+        }
+
+        .activity-time {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Status Indicator */
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: pulse-status 2s infinite;
+        }
+
+        .status-online {
+            background: #00FF88;
+            box-shadow: 0 0 20px #00FF88;
+        }
+
+        @keyframes pulse-status {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: rgba(10, 14, 39, 0.6);
+            border-radius: 12px;
+            overflow-x: auto;
+        }
+
+        .nav-tab {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+            font-weight: 500;
+            border: 1px solid transparent;
+        }
+
+        .nav-tab:hover {
+            background: rgba(0, 255, 255, 0.1);
+            border-color: rgba(0, 255, 255, 0.3);
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(135deg, #FF8C00, #00FFFF);
+            box-shadow: 0 4px 20px rgba(255, 140, 0, 0.3);
+            font-weight: 700;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            height: 8px;
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FF8C00, #00FFFF);
+            border-radius: 4px;
+            transition: width 1s ease;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        /* Terminal Style Log */
+        .terminal {
+            background: #0a0e1a;
+            border-radius: 12px;
+            padding: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .terminal-line {
+            padding: 0.25rem 0;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Metric Gauge */
+        .gauge {
+            width: 120px;
+            height: 120px;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .gauge-circle {
+            fill: none;
+            stroke: rgba(0, 255, 255, 0.1);
+            stroke-width: 8;
+        }
+
+        .gauge-progress {
+            fill: none;
+            stroke: url(#gradient);
+            stroke-width: 8;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 1s ease;
+        }
+
+        /* Responsive Grid */
+        .grid-responsive {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        /* Modal Overlay */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+    </style>
 </head>
-<body class="text-white p-8">
-  <div class="max-w-6xl mx-auto">
-    <div class="flex items-center justify-center mb-8">
-      <img src="assets/images/quantum-token-logo.png" alt="Quantum Token Logo" class="w-24 h-24 mr-4" style="filter: drop-shadow(0 0 20px #00FFFF);" onerror="this.src='assets/images/quantum-token-logo.svg'">
-      <h1 class="text-5xl font-bold" style="background: linear-gradient(135deg, #FF8C00 0%, #00FFFF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-        🔮 QUANTUM BLOCKCHAIN PRO
-      </h1>
+<body>
+    <!-- Animated Background Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Main Container -->
+    <div style="position: relative; z-index: 2;">
+        <!-- Header -->
+        <header class="header">
+            <div class="container mx-auto px-6">
+                <div class="flex justify-between items-center">
+                    <div class="logo-container">
+                        <img src="assets/images/quantum-token-logo.png" alt="Quantum" class="logo" onerror="this.src='assets/images/quantum-token-logo.svg'">
+                        <div>
+                            <h1 class="text-3xl gradient-text">QUANTUM PRO</h1>
+                            <p class="text-sm" style="color: #00FFFF;">Enterprise Blockchain Platform</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-6">
+                        <div class="flex items-center gap-2">
+                            <div class="status-indicator status-online"></div>
+                            <span class="text-sm">Sistema Operativo</span>
+                        </div>
+                        <button class="btn-primary" onclick="openModal('wallet')">
+                            <span style="position: relative; z-index: 1;">💼 Wallet</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="container mx-auto px-6 py-8">
+            <!-- Navigation Tabs -->
+            <div class="nav-tabs mb-8">
+                <div class="nav-tab active" onclick="switchTab('dashboard')">📊 Dashboard</div>
+                <div class="nav-tab" onclick="switchTab('wallet')">👛 Wallet</div>
+                <div class="nav-tab" onclick="switchTab('tokenmarket')">🪙 Token Market</div>
+                <div class="nav-tab" onclick="switchTab('smartcontracts')">📜 Smart Contracts</div>
+                <div class="nav-tab" onclick="switchTab('analytics')">📈 Analytics</div>
+                <div class="nav-tab" onclick="switchTab('transactions')">💰 Transactions</div>
+                <div class="nav-tab" onclick="switchTab('defi')">🏦 DeFi</div>
+                <div class="nav-tab" onclick="switchTab('nft')">🎨 NFT Market</div>
+                <div class="nav-tab" onclick="switchTab('security')">🛡️ Security</div>
+                <div class="nav-tab" onclick="switchTab('ai')">🤖 AI Hub</div>
+                <div class="nav-tab" onclick="switchTab('research')">🔬 Research</div>
+            </div>
+
+            <!-- Dashboard Section -->
+            <div id="dashboard" class="tab-content">
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="glass-card stat-card">
+                        <div class="stat-label">Total Value Locked</div>
+                        <div class="stat-value gradient-text" id="tvl">$124.5M</div>
+                        <div class="text-green-400 text-sm">↑ 12.5% este mes</div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div class="stat-label">Transacciones 24h</div>
+                        <div class="stat-value" style="color: #00FFFF;" id="tx24h">8,742</div>
+                        <div class="text-green-400 text-sm">↑ 8.3% vs ayer</div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div class="stat-label">Network Nodes</div>
+                        <div class="stat-value" style="color: #FF8C00;" id="nodes">1,234</div>
+                        <div class="text-cyan-400 text-sm">+42 nuevos hoy</div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div class="stat-label">Quantum Score</div>
+                        <div class="stat-value" style="color: #00FF88;" id="qscore">98.7%</div>
+                        <div class="text-yellow-400 text-sm">Óptimo</div>
+                    </div>
+                </div>
+
+                <!-- Main Grid -->
+                <div class="grid lg:grid-cols-3 gap-6 mb-8">
+                    <!-- Price Chart -->
+                    <div class="glass-card lg:col-span-2 p-6">
+                        <h3 class="text-xl font-bold mb-4">
+                            <span class="gradient-text">📊 Token Price & Volume</span>
+                        </h3>
+                        <div class="chart-container">
+                            <canvas id="priceChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Quantum Metrics -->
+                    <div class="glass-card p-6">
+                        <h3 class="text-xl font-bold mb-6">
+                            <span style="color: #00FFFF;">⚛️ Quantum Metrics</span>
+                        </h3>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm">Coherencia Cuántica</span>
+                                    <span class="font-bold" style="color: #00FFFF;">98.7%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 98.7%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm">Entrelazamiento</span>
+                                    <span class="font-bold" style="color: #FF8C00;">95.2%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 95.2%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm">Ventaja Cuántica</span>
+                                    <span class="font-bold" style="color: #00FF88;">87.5%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 87.5%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-sm">Qubits Activos</span>
+                                    <span class="font-bold" style="color: #FFD700;">512/512</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-6 border-t border-cyan-500/20">
+                            <button class="btn-secondary w-full">🔬 Optimizar Sistema</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity & Network -->
+                <div class="grid lg:grid-cols-2 gap-6">
+                    <!-- Recent Activity -->
+                    <div class="glass-card p-6">
+                        <h3 class="text-xl font-bold mb-4">
+                            <span style="color: #FF8C00;">🔔 Actividad Reciente</span>
+                        </h3>
+                        <div id="activityFeed" class="space-y-1">
+                            <!-- Activity items will be inserted here -->
+                        </div>
+                    </div>
+
+                    <!-- Network Status -->
+                    <div class="glass-card p-6">
+                        <h3 class="text-xl font-bold mb-4">
+                            <span style="color: #00FFFF;">🌐 Estado de la Red</span>
+                        </h3>
+                        <div class="terminal" id="terminal">
+                            <!-- Terminal output will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wallet Section -->
+            <div id="wallet" class="tab-content" style="display: none;">
+                <div class="glass-card p-8 mb-6">
+                    <h2 class="text-3xl font-bold gradient-text mb-6">👛 Quantum Wallet</h2>
+                    
+                    <!-- Balance -->
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div class="glass-card p-6 text-center">
+                            <div class="text-sm text-gray-400 mb-2">Balance QTK</div>
+                            <div class="text-3xl font-bold gradient-text">12,458.50</div>
+                            <div class="text-sm text-green-400 mt-2">≈ $124,585.00 USD</div>
+                        </div>
+                        <div class="glass-card p-6 text-center">
+                            <div class="text-sm text-gray-400 mb-2">Staked</div>
+                            <div class="text-3xl font-bold" style="color: #00FFFF;">5,000.00</div>
+                            <div class="text-sm text-cyan-400 mt-2">APY: 24.5%</div>
+                        </div>
+                        <div class="glass-card p-6 text-center">
+                            <div class="text-sm text-gray-400 mb-2">Recompensas</div>
+                            <div class="text-3xl font-bold" style="color: #FF8C00;">127.34</div>
+                            <div class="text-sm text-orange-400 mt-2">+$1,273.40 USD</div>
+                        </div>
+                    </div>
+
+                    <!-- Dirección de Cartera para Cobros -->
+                    <div class="glass-card p-6 mb-6">
+                        <h3 class="text-xl font-bold mb-4" style="color: #00FFFF;">💳 Dirección para Recibir Pagos</h3>
+                        <div class="bg-black/40 p-4 rounded-lg border-2 border-cyan-500/30 mb-4">
+                            <div class="text-xs text-gray-400 mb-2">Tu dirección Quantum (QRC-20)</div>
+                            <div class="font-mono text-lg break-all" style="color: #00FFFF;" id="walletAddress">0xQTK742a5F8b3E9D2c4A1B6f8E3D5C7A9B2F4E6D8</div>
+                        </div>
+                        <div class="flex gap-4">
+                            <button class="btn-primary flex-1" onclick="alert('✅ Dirección copiada al portapapeles!')">📋 Copiar Dirección</button>
+                            <button class="btn-secondary flex-1" onclick="alert('📱 Mostrando código QR...')">📱 Mostrar QR</button>
+                        </div>
+                    </div>
+
+                    <!-- Enviar/Recibir -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="glass-card p-6">
+                            <h3 class="text-xl font-bold mb-4 gradient-text">📤 Enviar Tokens</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm mb-2">Dirección Destino</label>
+                                    <input type="text" class="w-full bg-black/30 border-2 border-cyan-500/30 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none transition" placeholder="0x...">
+                                </div>
+                                <div>
+                                    <label class="block text-sm mb-2">Cantidad QTK</label>
+                                    <input type="number" class="w-full bg-black/30 border-2 border-cyan-500/30 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none transition" placeholder="0.00">
+                                </div>
+                                <button class="btn-primary w-full">⚡ Enviar</button>
+                            </div>
+                        </div>
+                        <div class="glass-card p-6">
+                            <h3 class="text-xl font-bold mb-4" style="color: #00FFFF;">📥 Recibir Tokens</h3>
+                            <div class="bg-black/40 p-8 rounded-lg text-center border-2 border-cyan-500/30 mb-4">
+                                <div class="text-6xl mb-4">📱</div>
+                                <div class="text-sm text-gray-400">Código QR</div>
+                                <div class="text-xs text-cyan-400 mt-2">Escanear para enviar QTK</div>
+                            </div>
+                            <button class="btn-secondary w-full">💾 Descargar QR</button>
+                        </div>
+                    </div>
+
+                    <!-- Historial de Transacciones -->
+                    <div class="glass-card p-6 mt-6">
+                        <h3 class="text-xl font-bold mb-4" style="color: #FF8C00;">📜 Historial Reciente</h3>
+                        <div class="space-y-3">
+                            <div class="bg-black/30 p-4 rounded-lg flex justify-between items-center">
+                                <div>
+                                    <div class="font-semibold text-green-400">+ 500.00 QTK</div>
+                                    <div class="text-xs text-gray-400">Recibido de 0x...3D5C</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-sm">$5,000.00</div>
+                                    <div class="text-xs text-gray-400">Hace 2 horas</div>
+                                </div>
+                            </div>
+                            <div class="bg-black/30 p-4 rounded-lg flex justify-between items-center">
+                                <div>
+                                    <div class="font-semibold text-red-400">- 150.00 QTK</div>
+                                    <div class="text-xs text-gray-400">Enviado a 0x...B2F4</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-sm">$1,500.00</div>
+                                    <div class="text-xs text-gray-400">Hace 5 horas</div>
+                                </div>
+                            </div>
+                            <div class="bg-black/30 p-4 rounded-lg flex justify-between items-center">
+                                <div>
+                                    <div class="font-semibold text-cyan-400">Staking Reward</div>
+                                    <div class="text-xs text-gray-400">+ 12.34 QTK</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-sm">$123.40</div>
+                                    <div class="text-xs text-gray-400">Hace 1 día</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Token Market Section -->
+            <div id="tokenmarket" class="tab-content" style="display: none;">
+                <div class="glass-card p-8">
+                    <h2 class="text-3xl font-bold gradient-text mb-6">🪙 Mercado de Tokens</h2>
+                    
+                    <!-- Market Stats -->
+                    <div class="grid md:grid-cols-4 gap-6 mb-8">
+                        <div class="glass-card p-4 text-center">
+                            <div class="text-sm text-gray-400">Precio QTK</div>
+                            <div class="text-2xl font-bold" style="color: #00FFFF;">$10.00</div>
+                            <div class="text-xs text-green-400">+5.2%</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="text-sm text-gray-400">Market Cap</div>
+                            <div class="text-2xl font-bold" style="color: #FF8C00;">$250M</div>
+                            <div class="text-xs text-cyan-400">Rank #45</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="text-sm text-gray-400">Volumen 24h</div>
+                            <div class="text-2xl font-bold" style="color: #00FF88;">$12.4M</div>
+                            <div class="text-xs text-yellow-400">↑ 18%</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="text-sm text-gray-400">Circulación</div>
+                            <div class="text-2xl font-bold" style="color: #FFD700;">25M</div>
+                            <div class="text-xs text-gray-400">/ 100M</div>
+                        </div>
+                    </div>
+
+                    <!-- Buy/Sell Interface -->
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div class="glass-card p-6">
+                            <h3 class="text-xl font-bold mb-4 gradient-text">💰 Comprar QTK</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm mb-2">Cantidad a Comprar</label>
+                                    <input type="number" id="buyAmount" class="w-full bg-black/30 border-2 border-cyan-500/30 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none transition" placeholder="100" value="100">
+                                </div>
+                                <div>
+                                    <label class="block text-sm mb-2">Método de Pago</label>
+                                    <select class="w-full bg-black/30 border-2 border-cyan-500/30 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none transition">
+                                        <option>💳 Tarjeta de Crédito</option>
+                                        <option>🏦 Transferencia Bancaria</option>
+                                        <option>💵 PayPal</option>
+                                        <option>₿ Bitcoin</option>
+                                        <option>Ξ Ethereum</option>
+                                    </select>
+                                </div>
+                                <div class="bg-black/40 p-4 rounded-lg border border-cyan-500/30">
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-sm">Precio por token:</span>
+                                        <span class="font-bold">$10.00</span>
+                                    </div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-sm">Fee de transacción:</span>
+                                        <span class="font-bold">2.5%</span>
+                                    </div>
+                                    <div class="border-t border-cyan-500/20 pt-2 mt-2">
+                                        <div class="flex justify-between">
+                                            <span class="font-bold">Total a Pagar:</span>
+                                            <span class="text-xl font-bold gradient-text" id="buyTotal">$1,025.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn-primary w-full">🛒 Comprar Ahora</button>
+                            </div>
+                        </div>
+                        <div class="glass-card p-6">
+                            <h3 class="text-xl font-bold mb-4" style="color: #FF8C00;">💸 Vender QTK</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm mb-2">Cantidad a Vender</label>
+                                    <input type="number" id="sellAmount" class="w-full bg-black/30 border-2 border-orange-500/30 rounded-lg px-4 py-3 focus:border-orange-500 focus:outline-none transition" placeholder="100" value="100">
+                                    <div class="text-xs text-gray-400 mt-1">Balance disponible: 12,458.50 QTK</div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm mb-2">Recibir en</label>
+                                    <select class="w-full bg-black/30 border-2 border-orange-500/30 rounded-lg px-4 py-3 focus:border-orange-500 focus:outline-none transition">
+                                        <option>💵 USD (Cuenta Bancaria)</option>
+                                        <option>💳 PayPal</option>
+                                        <option>₿ Bitcoin</option>
+                                        <option>Ξ Ethereum</option>
+                                        <option>💲 USDT (Stablecoin)</option>
+                                    </select>
+                                </div>
+                                <div class="bg-black/40 p-4 rounded-lg border border-orange-500/30">
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-sm">Precio por token:</span>
+                                        <span class="font-bold">$10.00</span>
+                                    </div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-sm">Fee de transacción:</span>
+                                        <span class="font-bold">1.5%</span>
+                                    </div>
+                                    <div class="border-t border-orange-500/20 pt-2 mt-2">
+                                        <div class="flex justify-between">
+                                            <span class="font-bold">Total a Recibir:</span>
+                                            <span class="text-xl font-bold" style="color: #FF8C00;" id="sellTotal">$985.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn-secondary w-full" style="border-color: #FF8C00; color: #FF8C00;">💰 Vender Ahora</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Order Book -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="glass-card p-6">
+                            <h3 class="text-lg font-bold mb-4 text-green-400">📗 Órdenes de Compra</h3>
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-sm bg-green-500/10 p-2 rounded">
+                                    <span>$10.05</span>
+                                    <span>250 QTK</span>
+                                    <span class="text-gray-400">$2,512.50</span>
+                                </div>
+                                <div class="flex justify-between text-sm bg-green-500/10 p-2 rounded">
+                                    <span>$10.02</span>
+                                    <span>500 QTK</span>
+                                    <span class="text-gray-400">$5,010.00</span>
+                                </div>
+                                <div class="flex justify-between text-sm bg-green-500/10 p-2 rounded">
+                                    <span>$10.00</span>
+                                    <span>1,200 QTK</span>
+                                    <span class="text-gray-400">$12,000.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glass-card p-6">
+                            <h3 class="text-lg font-bold mb-4 text-red-400">📕 Órdenes de Venta</h3>
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-sm bg-red-500/10 p-2 rounded">
+                                    <span>$10.10</span>
+                                    <span>180 QTK</span>
+                                    <span class="text-gray-400">$1,818.00</span>
+                                </div>
+                                <div class="flex justify-between text-sm bg-red-500/10 p-2 rounded">
+                                    <span>$10.15</span>
+                                    <span>420 QTK</span>
+                                    <span class="text-gray-400">$4,263.00</span>
+                                </div>
+                                <div class="flex justify-between text-sm bg-red-500/10 p-2 rounded">
+                                    <span>$10.20</span>
+                                    <span>800 QTK</span>
+                                    <span class="text-gray-400">$8,160.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Smart Contracts Section -->
+            <div id="smartcontracts" class="tab-content" style="display: none;">
+                <div class="glass-card p-8">
+                    <h2 class="text-3xl font-bold gradient-text mb-6">📜 Contratos Inteligentes Cuánticos</h2>
+                    
+                    <!-- Contract Templates -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-4" style="color: #00FFFF;">🎯 Plantillas de Contratos</h3>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="glass-card p-6 cursor-pointer hover:border-cyan-500">
+                                <div class="text-4xl mb-3">💰</div>
+                                <h4 class="font-bold mb-2">Pago Automático</h4>
+                                <p class="text-sm text-gray-400">Pagos programados y recurrentes</p>
+                            </div>
+                            <div class="glass-card p-6 cursor-pointer hover:border-cyan-500">
+                                <div class="text-4xl mb-3">🔒</div>
+                                <h4 class="font-bold mb-2">Escrow Cuántico</h4>
+                                <p class="text-sm text-gray-400">Depósito en garantía seguro</p>
+                            </div>
+                            <div class="glass-card p-6 cursor-pointer hover:border-cyan-500">
+                                <div class="text-4xl mb-3">🔑</div>
+                                <h4 class="font-bold mb-2">Multi-Firma</h4>
+                                <p class="text-sm text-gray-400">Requiere múltiples aprobaciones</p>
+                            </div>
+                            <div class="glass-card p-6 cursor-pointer hover:border-cyan-500">
+                                <div class="text-4xl mb-3">🪙</div>
+                                <h4 class="font-bold mb-2">Token QRC-20</h4>
+                                <p class="text-sm text-gray-400">Crear tu propio token</p>
+                            </div>
+                            <div class="glass-card p-6 cursor-pointer hover:border-cyan-500">
+                                <div class="text-4xl mb-3">🎨</div>
+                                <h4 class="font-bold mb-2">NFT Cuántico</h4>
+                                <p class="text-sm text-gray-400">Coleccionables únicos</p>
+                            </div>
+                            <div class="glass-card p-6 cursor-pointer hover:border-cyan-500">
+                                <div class="text-4xl mb-3">🏛️</div>
+                                <h4 class="font-bold mb-2">DAO Governance</h4>
+                                <p class="text-sm text-gray-400">Organización descentralizada</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Active Contracts -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-4" style="color: #FF8C00;">⚡ Contratos Activos</h3>
+                        <div class="space-y-4">
+                            <div class="glass-card p-6">
+                                <div class="flex justify-between items-start mb-4">
+                                    <div>
+                                        <h4 class="font-bold text-lg gradient-text">Pago Mensual Automatizado</h4>
+                                        <p class="text-sm text-gray-400">Contrato #QC-2025-0042</p>
+                                    </div>
+                                    <div class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-xs font-bold">
+                                        ✓ ACTIVO
+                                    </div>
+                                </div>
+                                <div class="grid md:grid-cols-4 gap-4 mb-4">
+                                    <div>
+                                        <div class="text-xs text-gray-400">Monto</div>
+                                        <div class="font-bold">500 QTK</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-gray-400">Frecuencia</div>
+                                        <div class="font-bold">Mensual</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-gray-400">Próximo Pago</div>
+                                        <div class="font-bold">25 Dic 2025</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-gray-400">Balance</div>
+                                        <div class="font-bold text-cyan-400">2,500 QTK</div>
+                                    </div>
+                                </div>
+                                <div class="flex gap-3">
+                                    <button class="btn-secondary text-sm">Ver Detalles</button>
+                                    <button class="btn-secondary text-sm" style="border-color: #FF8C00; color: #FF8C00;">Modificar</button>
+                                    <button class="btn-secondary text-sm" style="border-color: #ff4444; color: #ff4444;">Cancelar</button>
+                                </div>
+                            </div>
+
+                            <div class="glass-card p-6">
+                                <div class="flex justify-between items-start mb-4">
+                                    <div>
+                                        <h4 class="font-bold text-lg" style="color: #00FFFF;">Escrow - Compra de Servicio</h4>
+                                        <p class="text-sm text-gray-400">Contrato #QC-2025-0038</p>
+                                    </div>
+                                    <div class="bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded-full text-xs font-bold">
+                                        ⏳ PENDIENTE
+                                    </div>
+                                </div>
+                                <div class="grid md:grid-cols-4 gap-4 mb-4">
+                                    <div>
+                                        <div class="text-xs text-gray-400">Monto Bloqueado</div>
+                                        <div class="font-bold">1,500 QTK</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-gray-400">Vendedor</div>
+                                        <div class="font-bold text-xs">0x...F4E6</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-gray-400">Vencimiento</div>
+                                        <div class="font-bold">20 Dic 2025</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-gray-400">Árbitro</div>
+                                        <div class="font-bold">Sistema IA</div>
+                                    </div>
+                                </div>
+                                <div class="flex gap-3">
+                                    <button class="btn-primary text-sm">✓ Liberar Fondos</button>
+                                    <button class="btn-secondary text-sm" style="border-color: #ff4444; color: #ff4444;">⚠️ Disputar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Deploy New Contract -->
+                    <div class="glass-card p-6">
+                        <h3 class="text-xl font-bold mb-4 gradient-text">🚀 Desplegar Nuevo Contrato</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm mb-2">Tipo de Contrato</label>
+                                <select class="w-full bg-black/30 border-2 border-cyan-500/30 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none transition">
+                                    <option>💰 Pago Automático</option>
+                                    <option>🔒 Escrow Cuántico</option>
+                                    <option>🔑 Multi-Firma</option>
+                                    <option>🪙 Token QRC-20</option>
+                                    <option>🎨 NFT Cuántico</option>
+                                    <option>🏛️ DAO Governance</option>
+                                </select>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm mb-2">Nombre del Contrato</label>
+                                    <input type="text" class="w-full bg-black/30 border-2 border-cyan-500/30 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none transition" placeholder="Mi Contrato Cuántico">
+                                </div>
+                                <div>
+                                    <label class="block text-sm mb-2">Gas Limit</label>
+                                    <input type="number" class="w-full bg-black/30 border-2 border-cyan-500/30 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none transition" placeholder="50000" value="50000">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm mb-2">Parámetros (JSON)</label>
+                                <textarea class="w-full bg-black/30 border-2 border-cyan-500/30 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none transition font-mono text-sm" rows="6" placeholder='{
+  "amount": 1000,
+  "recipient": "0x...",
+  "frequency": "monthly"
+}'></textarea>
+                            </div>
+                            <div class="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="text-yellow-400">⚠️</span>
+                                    <span class="font-bold text-yellow-400">Costo Estimado de Deploy</span>
+                                </div>
+                                <div class="text-sm text-gray-300">Gas: 0.5 QTK (~$5.00) | Verificación Cuántica: 0.1 QTK</div>
+                            </div>
+                            <button class="btn-primary w-full">🚀 Desplegar Contrato en Quantum Network</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Sections (Hidden by default) -->
+            <div id="analytics" class="tab-content" style="display: none;">
+                <div class="glass-card p-8 text-center">
+                    <h2 class="text-3xl font-bold gradient-text mb-4">📈 Advanced Analytics</h2>
+                    <p class="text-lg mb-6">Panel de análisis avanzado con métricas detalladas</p>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="glass-card p-6">
+                            <div class="text-5xl mb-4">📊</div>
+                            <h3 class="font-bold mb-2">Market Analysis</h3>
+                            <p class="text-sm text-gray-400">Análisis de mercado en tiempo real</p>
+                        </div>
+                        <div class="glass-card p-6">
+                            <div class="text-5xl mb-4">🎯</div>
+                            <h3 class="font-bold mb-2">Performance Metrics</h3>
+                            <p class="text-sm text-gray-400">KPIs y métricas de rendimiento</p>
+                        </div>
+                        <div class="glass-card p-6">
+                            <div class="text-5xl mb-4">📉</div>
+                            <h3 class="font-bold mb-2">Risk Assessment</h3>
+                            <p class="text-sm text-gray-400">Evaluación de riesgos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="transactions" class="tab-content" style="display: none;">
+                <div class="glass-card p-8">
+                    <h2 class="text-3xl font-bold gradient-text mb-6">💰 Transaction Hub</h2>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block mb-2 font-semibold">Destinatario</label>
+                            <input type="text" class="w-full bg-black/30 border-2 border-cyan-500/30 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none transition" placeholder="0x...">
+                        </div>
+                        <div>
+                            <label class="block mb-2 font-semibold">Cantidad (QTK)</label>
+                            <input type="number" class="w-full bg-black/30 border-2 border-cyan-500/30 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none transition" placeholder="0.00">
+                        </div>
+                    </div>
+                    <button class="btn-primary mt-6 w-full md:w-auto">
+                        <span style="position: relative; z-index: 1;">⚡ Enviar Transacción</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="defi" class="tab-content" style="display: none;">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="glass-card p-6">
+                        <h3 class="text-xl font-bold mb-4 gradient-text">💱 Swap</h3>
+                        <p class="mb-4">Intercambia tokens al mejor precio</p>
+                        <button class="btn-primary w-full">Abrir Swap</button>
+                    </div>
+                    <div class="glass-card p-6">
+                        <h3 class="text-xl font-bold mb-4" style="color: #00FFFF;">💎 Staking</h3>
+                        <p class="mb-4">APY: 24.5%</p>
+                        <button class="btn-primary w-full">Stake Tokens</button>
+                    </div>
+                    <div class="glass-card p-6">
+                        <h3 class="text-xl font-bold mb-4" style="color: #FF8C00;">🌊 Liquidity</h3>
+                        <p class="mb-4">Provee liquidez y gana fees</p>
+                        <button class="btn-primary w-full">Add Liquidity</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="nft" class="tab-content" style="display: none;">
+                <div class="glass-card p-8 text-center">
+                    <h2 class="text-3xl font-bold gradient-text mb-4">🎨 NFT Marketplace</h2>
+                    <p class="text-lg mb-6">Marketplace de NFTs cuánticos certificados</p>
+                    <button class="btn-primary">Explorar Colecciones</button>
+                </div>
+            </div>
+
+            <div id="security" class="tab-content" style="display: none;">
+                <div class="glass-card p-8">
+                    <h2 class="text-3xl font-bold gradient-text mb-6">🛡️ Security Center</h2>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="glass-card p-6">
+                            <h3 class="text-xl font-bold mb-2" style="color: #00FF88;">✅ Criptografía Post-Cuántica</h3>
+                            <p class="text-sm mb-4">Estado: ACTIVO</p>
+                            <div class="text-xs text-gray-400">Última actualización: hace 2 minutos</div>
+                        </div>
+                        <div class="glass-card p-6">
+                            <h3 class="text-xl font-bold mb-2" style="color: #00FFFF;">🔍 Threat Detection</h3>
+                            <p class="text-sm mb-4">0 amenazas detectadas</p>
+                            <div class="text-xs text-gray-400">Escaneando continuamente</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="ai" class="tab-content" style="display: none;">
+                <div class="glass-card p-8 text-center">
+                    <h2 class="text-3xl font-bold gradient-text mb-4">🤖 AI Quantum Hub</h2>
+                    <p class="text-lg mb-6">Inteligencia Artificial integrada con computación cuántica</p>
+                    <div class="grid md:grid-cols-2 gap-6 text-left">
+                        <div class="glass-card p-6">
+                            <h3 class="font-bold mb-2">🧠 Análisis Predictivo</h3>
+                            <p class="text-sm text-gray-400">ML models para predicción de mercado</p>
+                        </div>
+                        <div class="glass-card p-6">
+                            <h3 class="font-bold mb-2">🔮 Optimización Cuántica</h3>
+                            <p class="text-sm text-gray-400">Algoritmos cuánticos de optimización</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="research" class="tab-content" style="display: none;">
+                <div class="glass-card p-8 text-center">
+                    <h2 class="text-3xl font-bold gradient-text mb-4">🔬 Research Lab</h2>
+                    <p class="text-lg mb-6">Centro de investigación en blockchain cuántico</p>
+                    <button class="btn-primary">Acceder al Laboratorio</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="container mx-auto px-6 py-8 mt-16 border-t border-cyan-500/20">
+            <div class="text-center text-sm text-gray-400">
+                <p>© 2025 Quantum Blockchain Pro. Enterprise Platform v2.0.0</p>
+                <p class="mt-2">Powered by Post-Quantum Cryptography 🔐</p>
+            </div>
+        </footer>
     </div>
-    
-    <div class="grid md:grid-cols-3 gap-6 mb-6">
-      <div class="p-6 rounded-lg shadow-lg" style="background: rgba(30, 58, 95, 0.3); border: 2px solid rgba(0, 255, 255, 0.3); backdrop-filter: blur(10px);">
-        <h2 class="text-2xl mb-4" style="color: #00FFFF; font-weight: bold;">📊 Dashboard</h2>
-        <div class="space-y-2">
-          <div>Bloques: <span id="blocks" class="text-cyan-400 font-bold">0</span></div>
-          <div>Transacciones: <span id="txs" class="text-purple-400 font-bold">0</span></div>
-          <div class="flex items-center gap-2">
-            <img src="assets/images/quantum-token-logo.svg" alt="QC" class="w-6 h-6" onerror="this.style.display='none'">
-            <span>Tokens: <span id="tokens" class="text-green-400 font-bold">1000 QC</span></span>
-          </div>
+
+    <!-- Wallet Modal -->
+    <div id="walletModal" class="modal">
+        <div class="modal-content glass-card p-8">
+            <h2 class="text-2xl font-bold gradient-text mb-6">💼 Wallet</h2>
+            <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                    <span>Balance QTK:</span>
+                    <span class="text-2xl font-bold" style="color: #00FFFF;">1,000,000</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span>Valor USD:</span>
+                    <span class="text-xl font-bold" style="color: #00FF88;">$12,450,000</span>
+                </div>
+            </div>
+            <button class="btn-secondary w-full mt-6" onclick="closeModal()">Cerrar</button>
         </div>
-      </div>
-      
-      <div class="p-6 rounded-lg shadow-lg" style="background: rgba(30, 58, 95, 0.3); border: 2px solid rgba(0, 255, 255, 0.3); backdrop-filter: blur(10px);">
-        <h2 class="text-2xl mb-4" style="color: #FF8C00; font-weight: bold;">🎮 Controles</h2>
-        <div class="space-y-2">
-          <button onclick="tx()" class="w-full px-4 py-2 rounded font-bold" style="background: linear-gradient(45deg, #FF8C00, #00FFFF); color: white; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-            💸 Procesar Transacción
-          </button>
-          <button onclick="tx()" class="w-full px-4 py-2 rounded font-bold" style="background: linear-gradient(45deg, #1E3A5F, #00FFFF); color: white; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-            💸 Nueva Transacción
-          </button>
-          <button onclick="reset()" class="w-full px-4 py-2 rounded font-bold" style="background: linear-gradient(45deg, #FF8C00, #1E3A5F); color: white; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-            🔄 Reset
-          </button>
-        </div>
-      </div>
-      
-      <div class="p-6 rounded-lg shadow-lg" style="background: rgba(30, 58, 95, 0.3); border: 2px solid rgba(0, 255, 255, 0.3); backdrop-filter: blur(10px);">
-        <h2 class="text-2xl mb-4" style="color: #00FFFF; font-weight: bold;">⚡ Estado Cuántico</h2>
-        <div class="space-y-2">
-          <div>Coherencia: <span id="coherence" style="color: #FF8C00; font-weight: bold;">100%</span></div>
-          <div>Entrelazamiento: <span id="entanglement" style="color: #00FFFF; font-weight: bold;">Activo</span></div>
-          <div>Hash Rate: <span id="hashrate" style="color: #FF8C00; font-weight: bold;">0 H/s</span></div>
-        </div>
-      </div>
     </div>
-    
-    <div class="p-6 rounded-lg shadow-lg" style="background: rgba(30, 58, 95, 0.3); border: 2px solid rgba(0, 255, 255, 0.3); backdrop-filter: blur(10px);">
-      <h2 class="text-2xl mb-4" style="color: #00FFFF; font-weight: bold;">📜 Log de Eventos</h2>
-      <div id="log" class="h-48 overflow-y-auto p-4 rounded text-sm font-mono space-y-1" style="background: rgba(10, 14, 39, 0.8); border: 1px solid rgba(0, 255, 255, 0.2);">
-        <div style="color: #FF8C00; font-weight: bold;">✅ Sistema Quantum Blockchain iniciado</div>
-      </div>
-    </div>
-  </div>
 
-  <script>
-    let state = {
-      blocks: 0,
-      txs: 0,
-      tokens: 1000,
-      coherence: 100,
-      hashrate: 0
-    };
+    <script>
+        // Generate animated particles
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particles.appendChild(particle);
+            }
+        }
 
-    function update() {
-      document.getElementById('blocks').textContent = state.blocks;
-      document.getElementById('txs').textContent = state.txs;
-      document.getElementById('tokens').textContent = state.tokens + ' QC';
-      document.getElementById('coherence').textContent = state.coherence + '%';
-      document.getElementById('hashrate').textContent = state.hashrate + ' H/s';
-    }
+        // Tab switching
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
+            document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabName).style.display = 'block';
+            event.target.classList.add('active');
+            addTerminalLine(`[INFO] Navegando a ${tabName.toUpperCase()}`);
+        }
 
-    function log(msg, color = 'text-gray-300') {
-      const l = document.getElementById('log');
-      const time = new Date().toLocaleTimeString();
-      l.innerHTML += '<div class="' + color + '">⏰ ' + time + ' - ' + msg + '</div>';
-      l.scrollTop = l.scrollHeight;
-    }
+        // Modal functions
+        function openModal(modalName) {
+            document.getElementById(modalName + 'Modal').classList.add('active');
+        }
 
-    function generateBlock() {
-      log('🔄 Generando nuevo bloque cuántico...', 'text-blue-400');
-      state.hashrate = Math.floor(Math.random() * 1000) + 500;
-      update();
-      
-      setTimeout(() => {
-        state.blocks++;
-        state.coherence = Math.max(85, state.coherence - Math.random() * 5);
-        log('✅ Bloque #' + state.blocks + ' generado exitosamente!', 'text-green-400');
-        update();
-        state.hashrate = 0;
-        update();
-      }, 2000);
-    }
+        function closeModal() {
+            document.querySelectorAll('.modal').forEach(m => m.classList.remove('active'));
+        }
 
-    function tx() {
-      log('💸 Creando transacción cuántica...', 'text-purple-400');
-      setTimeout(() => {
-        state.txs++;
-        state.tokens -= 5;
-        log('✅ Transacción #' + state.txs + ' procesada! (-5 QC)', 'text-green-400');
-        update();
-      }, 800);
-    }
+        // Terminal
+        function addTerminalLine(text, color = '#00FFFF') {
+            const terminal = document.getElementById('terminal');
+            const line = document.createElement('div');
+            line.className = 'terminal-line';
+            line.style.color = color;
+            const time = new Date().toLocaleTimeString();
+            line.textContent = `[${time}] ${text}`;
+            terminal.appendChild(line);
+            terminal.scrollTop = terminal.scrollHeight;
+            if (terminal.children.length > 20) terminal.removeChild(terminal.firstChild);
+        }
 
-    function reset() {
-      log('🔄 Reiniciando sistema...', 'text-red-400');
-      setTimeout(() => {
-        state = {blocks: 0, txs: 0, tokens: 1000, coherence: 100, hashrate: 0};
-        document.getElementById('log').innerHTML = '<div class="text-green-400">✅ Sistema reiniciado</div>';
-        update();
-      }, 500);
-    }
+        // Activity Feed
+        function addActivity(icon, text, time) {
+            const feed = document.getElementById('activityFeed');
+            const item = document.createElement('div');
+            item.className = 'activity-item';
+            item.innerHTML = `
+                <div class="flex items-start gap-3">
+                    <div class="text-2xl">${icon}</div>
+                    <div class="flex-1">
+                        <div class="text-sm">${text}</div>
+                        <div class="activity-time">${time}</div>
+                    </div>
+                </div>
+            `;
+            feed.insertBefore(item, feed.firstChild);
+            if (feed.children.length > 10) feed.removeChild(feed.lastChild);
+        }
 
-    update();
-  </script>
+        // Price Chart
+        function initChart() {
+            const ctx = document.getElementById('priceChart').getContext('2d');
+            const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+            gradient.addColorStop(0, 'rgba(0, 255, 255, 0.3)');
+            gradient.addColorStop(1, 'rgba(0, 255, 255, 0)');
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', '24:00'],
+                    datasets: [{
+                        label: 'Precio QTK',
+                        data: [10.2, 10.8, 11.5, 12.1, 12.4, 11.9, 12.45],
+                        borderColor: '#00FFFF',
+                        backgroundColor: gradient,
+                        borderWidth: 3,
+                        tension: 0.4,
+                        fill: true,
+                        pointBackgroundColor: '#FF8C00',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(10, 14, 39, 0.9)',
+                            borderColor: '#00FFFF',
+                            borderWidth: 1
+                        }
+                    },
+                    scales: {
+                        y: {
+                            grid: { color: 'rgba(0, 255, 255, 0.1)' },
+                            ticks: { color: '#00FFFF' }
+                        },
+                        x: {
+                            grid: { color: 'rgba(0, 255, 255, 0.1)' },
+                            ticks: { color: '#00FFFF' }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            initChart();
+            
+            // Initial terminal messages
+            addTerminalLine('[SYSTEM] Quantum Blockchain Pro v2.0.0 iniciado', '#00FF88');
+            addTerminalLine('[NETWORK] Conectado a 1,234 nodos', '#00FFFF');
+            addTerminalLine('[SECURITY] Criptografía post-cuántica: ACTIVA', '#00FF88');
+            addTerminalLine('[READY] Sistema listo para operaciones', '#FFD700');
+
+            // Initial activities
+            addActivity('💰', 'Nueva transacción: 500 QTK transferidos', 'Hace 2 min');
+            addActivity('🔗', 'Nuevo bloque validado #45,892', 'Hace 5 min');
+            addActivity('👤', '3 nuevos nodos unidos a la red', 'Hace 8 min');
+            addActivity('🛡️', 'Escaneo de seguridad completado', 'Hace 12 min');
+
+            // Simulate live updates
+            setInterval(() => {
+                const activities = [
+                    { icon: '💰', text: `Transacción: ${Math.floor(Math.random() * 1000)} QTK` },
+                    { icon: '🔗', text: `Bloque validado #${Math.floor(Math.random() * 50000)}` },
+                    { icon: '👤', text: `${Math.floor(Math.random() * 5)} nuevos nodos` },
+                    { icon: '⚡', text: 'Actualización de red completada' }
+                ];
+                const activity = activities[Math.floor(Math.random() * activities.length)];
+                addActivity(activity.icon, activity.text, 'Ahora');
+                addTerminalLine(`[UPDATE] ${activity.text}`, '#00FFFF');
+            }, 10000);
+
+            // Animate counters
+            animateCounter('tvl', 124500000, '$', 'M');
+            animateCounter('tx24h', 8742, '', '');
+            animateCounter('nodes', 1234, '', '');
+        });
+
+        function animateCounter(id, target, prefix = '', suffix = '') {
+            const element = document.getElementById(id);
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = prefix + Math.floor(current).toLocaleString() + suffix;
+            }, 20);
+        }
+    </script>
 </body>
 </html>
