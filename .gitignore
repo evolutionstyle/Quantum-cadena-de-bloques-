@@ -45,6 +45,34 @@ coverage/
 logs/
 
 # ========================================
+# CONFIDENTIAL BUSINESS DOCUMENTS
+# ========================================
+# Documentos privados para inversores - NO subir a GitHub público
+PITCH-DECK.md
+FUNDING-GUIDE.md
+EXECUTIVE-SUMMARY.md
+BUSINESS-LAUNCH-PACKAGE.md
+
+# Documentación interna
+INTEGRATION-SUMMARY.md
+LOGO-SETUP.md
+
+# ========================================
+# CARPETAS DUPLICADAS Y TEMPORALES
+# ========================================
+nuevo/
+temp/
+tmp/
+backup/
+
+# ========================================
+# ARCHIVOS DE DESARROLLO
+# ========================================
+*.code-workspace
+.vscode/settings.json
+.idea/
+
+# ========================================
 # COMMERCIAL STRATEGY - MAXIMUM VISIBILITY
 # ========================================
 
