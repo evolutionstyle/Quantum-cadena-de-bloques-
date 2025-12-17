@@ -294,8 +294,8 @@ npm run deploy
 
 ### Información de Contacto
 - **Email**: hello@quantumchain.io
-- **Phone**: +1 (555) QUANTUM
-- **Address**: Quantum Valley, CA
+- **Phone**: +1 4846877462 QUANTUM
+- **Address**: Quantum Valley,USA
 
 ### Soporte Técnico
 - **Documentación**: Disponible en el repositorio
