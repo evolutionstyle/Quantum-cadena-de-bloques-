@@ -1,0 +1,28 @@
+# GitHub Pages Configuration
+# Quantum Blockchain Pro - Enterprise Platform
+
+# Tema (usa null para HTML puro)
+theme: null
+
+# Plugins
+plugins:
+  - jekyll-relative-links
+
+# Configuración de enlaces relativos
+relative_links:
+  enabled: true
+  collections: false
+
+# Excluir archivos del build
+exclude:
+  - node_modules/
+  - src/
+  - tests/
+  - package.json
+  - tsconfig.json
+  - vite.config.ts
+  - tailwind.config.js
+  - README.md
+  - LICENSE
+  - SECURITY.md
+  - "*.md"
