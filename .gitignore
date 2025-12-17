@@ -45,54 +45,6 @@ coverage/
 logs/
 
 # ========================================
-# CONFIDENTIAL BUSINESS DOCUMENTS
-# ========================================
-# Documentos privados para inversores - NO subir a GitHub público
-PITCH-DECK.md
-FUNDING-GUIDE.md
-EXECUTIVE-SUMMARY.md
-BUSINESS-LAUNCH-PACKAGE.md
-
-# Documentación interna
-INTEGRATION-SUMMARY.md
-LOGO-SETUP.md
-
-# ========================================
-# CARPETAS DUPLICADAS Y TEMPORALES
-# ========================================
-nuevo/
-temp/
-tmp/
-backup/
-
-# ========================================
-# ARCHIVOS DE PRUEBA Y DESARROLLO
-# ========================================
-test.html
-simple.html
-*-test.html
-*-backup.html
-*-old.html
-*.bak
-
-# ========================================
-# ARCHIVOS INNECESARIOS EN ASSETS
-# ========================================
-assets/images/*.lnk
-assets/images/*.jpeg
-assets/images/*.jpg
-assets/images/2024*
-assets/images/Messenger_*
-# Mantener solo PNG oficial: quantum-token-logo.png
-
-# ========================================
-# ARCHIVOS DE DESARROLLO
-# ========================================
-*.code-workspace
-.vscode/settings.json
-.idea/
-
-# ========================================
 # COMMERCIAL STRATEGY - MAXIMUM VISIBILITY
 # ========================================
 
