@@ -1,0 +1,351 @@
+/**
+ * 🎨 Quantum Token Theme - Tema oficial basado en el logo
+ * Colores y estilos oficiales para toda la aplicación
+ */
+
+:root {
+  /* ========================================
+     COLORES PRINCIPALES DEL LOGO
+     ======================================== */
+  --quantum-orange: #FF8C00;      /* Naranja - Energía e innovación */
+  --quantum-blue: #1E3A5F;        /* Azul oscuro - Profundidad cuántica */
+  --quantum-cyan: #00FFFF;        /* Cyan - Tecnología del futuro */
+  
+  /* ========================================
+     VARIACIONES DE COLOR
+     ======================================== */
+  /* Naranja */
+  --quantum-orange-light: #FFA500;
+  --quantum-orange-dark: #E67E00;
+  --quantum-orange-darker: #CC7000;
+  
+  /* Azul */
+  --quantum-blue-light: #2D5F8D;
+  --quantum-blue-dark: #0F1F3F;
+  --quantum-blue-darker: #0A1528;
+  
+  /* Cyan */
+  --quantum-cyan-light: #66FFFF;
+  --quantum-cyan-dark: #00CCCC;
+  --quantum-cyan-darker: #009999;
+  
+  /* ========================================
+     GRADIENTES OFICIALES
+     ======================================== */
+  --quantum-gradient-primary: linear-gradient(135deg, #FF8C00 0%, #1E3A5F 50%, #00FFFF 100%);
+  --quantum-gradient-reverse: linear-gradient(135deg, #00FFFF 0%, #1E3A5F 50%, #FF8C00 100%);
+  --quantum-gradient-horizontal: linear-gradient(90deg, #FF8C00 0%, #1E3A5F 50%, #00FFFF 100%);
+  --quantum-gradient-orange-cyan: linear-gradient(45deg, #FF8C00, #00FFFF);
+  --quantum-gradient-blue-cyan: linear-gradient(45deg, #1E3A5F, #00FFFF);
+  --quantum-gradient-orange-blue: linear-gradient(45deg, #FF8C00, #1E3A5F);
+  
+  /* ========================================
+     FONDOS
+     ======================================== */
+  --quantum-bg-primary: linear-gradient(135deg, #0a0e27 0%, #1E3A5F 50%, #16213e 100%);
+  --quantum-bg-dark: #0a0e27;
+  --quantum-bg-darker: #050712;
+  --quantum-bg-card: rgba(30, 58, 95, 0.3);
+  --quantum-bg-card-hover: rgba(30, 58, 95, 0.5);
+  --quantum-bg-overlay: rgba(10, 14, 39, 0.8);
+  
+  /* ========================================
+     BORDES Y SOMBRAS
+     ======================================== */
+  /* Bordes */
+  --quantum-border-cyan: rgba(0, 255, 255, 0.3);
+  --quantum-border-cyan-hover: rgba(0, 255, 255, 0.6);
+  --quantum-border-orange: rgba(255, 140, 0, 0.3);
+  --quantum-border-orange-hover: rgba(255, 140, 0, 0.8);
+  --quantum-border-blue: rgba(30, 58, 95, 0.5);
+  
+  /* Sombras */
+  --quantum-shadow-cyan: 0 0 20px rgba(0, 255, 255, 0.5);
+  --quantum-shadow-cyan-strong: 0 0 30px rgba(0, 255, 255, 0.8);
+  --quantum-shadow-orange: 0 0 20px rgba(255, 140, 0, 0.5);
+  --quantum-shadow-orange-strong: 0 0 30px rgba(255, 140, 0, 0.8);
+  --quantum-shadow-blue: 0 0 20px rgba(30, 58, 95, 0.5);
+  --quantum-shadow-mixed: 0 0 25px rgba(0, 255, 255, 0.3), 0 0 50px rgba(255, 140, 0, 0.2);
+  
+  /* ========================================
+     EFECTOS Y FILTROS
+     ======================================== */
+  --quantum-glow-cyan: drop-shadow(0 0 10px #00FFFF) drop-shadow(0 0 20px #00FFFF);
+  --quantum-glow-orange: drop-shadow(0 0 10px #FF8C00) drop-shadow(0 0 20px #FF8C00);
+  --quantum-glow-mixed: drop-shadow(0 0 15px #00FFFF) drop-shadow(0 0 25px #FF8C00);
+  
+  /* ========================================
+     TIPOGRAFÍA
+     ======================================== */
+  --quantum-font-primary: 'Exo 2', system-ui, -apple-system, sans-serif;
+  --quantum-font-heading: 'Orbitron', 'Courier New', monospace;
+  --quantum-font-mono: 'Courier New', Consolas, monospace;
+}
+
+/* ========================================
+   CLASES UTILITARIAS
+   ======================================== */
+
+/* Gradientes de texto */
+.quantum-text-gradient {
+  background: var(--quantum-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: bold;
+}
+
+.quantum-text-gradient-reverse {
+  background: var(--quantum-gradient-reverse);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: bold;
+}
+
+/* Colores de texto */
+.text-quantum-orange { color: var(--quantum-orange); }
+.text-quantum-blue { color: var(--quantum-blue); }
+.text-quantum-cyan { color: var(--quantum-cyan); }
+
+/* Fondos */
+.bg-quantum-card {
+  background: var(--quantum-bg-card);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--quantum-border-cyan);
+}
+
+.bg-quantum-dark {
+  background: var(--quantum-bg-dark);
+}
+
+/* Botones */
+.btn-quantum-primary {
+  background: var(--quantum-gradient-orange-cyan);
+  color: white;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--quantum-shadow-orange);
+}
+
+.btn-quantum-primary:hover {
+  transform: scale(1.05);
+  box-shadow: var(--quantum-shadow-orange-strong);
+}
+
+.btn-quantum-secondary {
+  background: var(--quantum-gradient-blue-cyan);
+  color: white;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-quantum-secondary:hover {
+  transform: scale(1.05);
+  box-shadow: var(--quantum-shadow-cyan);
+}
+
+.btn-quantum-outline {
+  background: transparent;
+  color: var(--quantum-cyan);
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--quantum-cyan);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-quantum-outline:hover {
+  background: rgba(0, 255, 255, 0.1);
+  border-color: var(--quantum-orange);
+  color: var(--quantum-orange);
+  box-shadow: var(--quantum-shadow-cyan);
+}
+
+/* Tarjetas */
+.card-quantum {
+  background: var(--quantum-bg-card);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--quantum-border-cyan);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.card-quantum:hover {
+  border-color: var(--quantum-border-orange-hover);
+  box-shadow: var(--quantum-shadow-mixed);
+  transform: translateY(-5px);
+}
+
+/* Efectos de brillo */
+.glow-quantum-cyan {
+  filter: var(--quantum-glow-cyan);
+}
+
+.glow-quantum-orange {
+  filter: var(--quantum-glow-orange);
+}
+
+.glow-quantum-mixed {
+  filter: var(--quantum-glow-mixed);
+}
+
+/* Animaciones */
+@keyframes quantum-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes quantum-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px var(--quantum-cyan), 0 0 20px var(--quantum-cyan);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--quantum-orange), 0 0 40px var(--quantum-orange);
+  }
+}
+
+@keyframes quantum-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes quantum-gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-quantum-pulse {
+  animation: quantum-pulse 3s ease-in-out infinite;
+}
+
+.animate-quantum-glow {
+  animation: quantum-glow 2s ease-in-out infinite;
+}
+
+.animate-quantum-float {
+  animation: quantum-float 6s ease-in-out infinite;
+}
+
+.animate-quantum-gradient {
+  background-size: 200% 200%;
+  animation: quantum-gradient-shift 3s ease infinite;
+}
+
+/* Inputs y formularios */
+.input-quantum {
+  background: var(--quantum-bg-overlay);
+  border: 2px solid var(--quantum-border-cyan);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: var(--quantum-cyan);
+  font-family: var(--quantum-font-mono);
+  transition: all 0.3s ease;
+}
+
+.input-quantum:focus {
+  outline: none;
+  border-color: var(--quantum-orange);
+  box-shadow: var(--quantum-shadow-cyan);
+}
+
+.input-quantum::placeholder {
+  color: rgba(0, 255, 255, 0.5);
+}
+
+/* Badges y etiquetas */
+.badge-quantum-orange {
+  background: var(--quantum-orange);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+
+.badge-quantum-cyan {
+  background: var(--quantum-cyan);
+  color: var(--quantum-bg-dark);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+
+.badge-quantum-blue {
+  background: var(--quantum-blue);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--quantum-bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--quantum-blue);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--quantum-cyan);
+}
+
+/* Modo de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .animate-quantum-pulse,
+  .animate-quantum-glow,
+  .animate-quantum-float,
+  .animate-quantum-gradient {
+    animation: none !important;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .btn-quantum-primary,
+  .btn-quantum-secondary,
+  .btn-quantum-outline {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .card-quantum {
+    padding: 1rem;
+  }
+}

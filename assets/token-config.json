@@ -1,0 +1,35 @@
+{
+  "name": "Quantum Coin",
+  "symbol": "QC",
+  "decimals": 18,
+  "totalSupply": "1000000000",
+  "logo": {
+    "main": "assets/images/quantum-token-logo.svg",
+    "favicon": "assets/images/quantum-favicon.ico",
+    "sizes": {
+      "small": "assets/images/quantum-token-16.png",
+      "medium": "assets/images/quantum-token-32.png",
+      "large": "assets/images/quantum-token-64.png",
+      "xlarge": "assets/images/quantum-token-128.png"
+    }
+  },
+  "colors": {
+    "primary": "#FF8C00",
+    "secondary": "#1E3A5F",
+    "accent": "#00FFFF",
+    "gradient": "linear-gradient(135deg, #FF8C00 0%, #1E3A5F 50%, #00FFFF 100%)"
+  },
+  "description": "Token cuántico nativo del ecosistema Quantum Blockchain",
+  "features": [
+    "Criptografía post-cuántica",
+    "Entrelazamiento cuántico",
+    "Resistente a ataques de computadoras cuánticas",
+    "Velocidad de transacción cuántica"
+  ],
+  "network": {
+    "chainId": 9999,
+    "networkName": "Quantum Chain",
+    "rpcUrl": "https://rpc.quantumchain.io",
+    "explorerUrl": "https://explorer.quantumchain.io"
+  }
+}

@@ -1,4 +1,35 @@
-/* Quantum Blockchain - Estilos adicionales para corrección de errores */
+/* Quantum Blockchain - Estilos con colores oficiales del logo */
+@import url('assets/quantum-theme.css');
+
+:root {
+  /* Colores oficiales del Quantum Token */
+  --quantum-orange: #FF8C00;
+  --quantum-blue: #1E3A5F;
+  --quantum-cyan: #00FFFF;
+  
+  /* Gradiente oficial */
+  --quantum-gradient: linear-gradient(135deg, #FF8C00 0%, #1E3A5F 50%, #00FFFF 100%);
+  --quantum-gradient-reverse: linear-gradient(135deg, #00FFFF 0%, #1E3A5F 50%, #FF8C00 100%);
+  
+  /* Variaciones de color */
+  --quantum-orange-light: #FFA500;
+  --quantum-orange-dark: #E67E00;
+  --quantum-blue-light: #2D5F8D;
+  --quantum-blue-dark: #0F1F3F;
+  --quantum-cyan-light: #66FFFF;
+  --quantum-cyan-dark: #00CCCC;
+  
+  /* Fondos */
+  --quantum-bg-primary: linear-gradient(135deg, #0a0e27 0%, #1E3A5F 50%, #16213e 100%);
+  --quantum-bg-dark: #0a0e27;
+  --quantum-bg-card: rgba(30, 58, 95, 0.2);
+  
+  /* Bordes y sombras */
+  --quantum-border: rgba(0, 255, 255, 0.3);
+  --quantum-border-hover: rgba(255, 140, 0, 0.8);
+  --quantum-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  --quantum-shadow-orange: 0 0 20px rgba(255, 140, 0, 0.5);
+}
 
 /* Clases de delay de animación para reemplazar estilos inline */
 .animate-delay-200 { animation-delay: 0.2s; }

@@ -4,6 +4,7 @@
  */
 
 import { QuantumDApp } from './core/quantum-dapp'
+import { QuantumTokenLogo } from './ui/quantum-token-logo'
 
 // Crear instancia global de la DApp
 let quantumApp: QuantumDApp
@@ -21,6 +22,18 @@ async function initializeQuantumApp(): Promise<void> {
     if (typeof window !== 'undefined') {
       (window as any).quantumApp = quantumApp
       (window as any).QuantumDApp = QuantumDApp
+      (window as any).QuantumTokenLogo = QuantumTokenLogo
+      
+      // Inyectar logo en el documento si existe un contenedor
+      const logoContainer = document.getElementById('quantum-logo-container')
+      if (logoContainer) {
+        const logo = QuantumTokenLogo.createElement({ 
+          size: 'large', 
+          animate: true, 
+          showLabel: true 
+        })
+        logoContainer.appendChild(logo)
+      }
     }
     
     console.log('✅ Quantum DApp cargado exitosamente!')

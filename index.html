@@ -4,53 +4,67 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quantum Blockchain Pro</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/quantum-token-logo.svg">
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #0a0e27 0%, #1E3A5F 50%, #16213e 100%);
+      min-height: 100vh;
+    }
+  </style>
 </head>
-<body class="bg-gray-900 text-white p-8">
+<body class="text-white p-8">
   <div class="max-w-6xl mx-auto">
-    <h1 class="text-5xl font-bold text-cyan-400 mb-8 text-center">
-      🔮 QUANTUM BLOCKCHAIN PRO
-    </h1>
+    <div class="flex items-center justify-center mb-8">
+      <img src="assets/images/quantum-token-logo.png" alt="Quantum Token Logo" class="w-24 h-24 mr-4" style="filter: drop-shadow(0 0 20px #00FFFF);" onerror="this.src='assets/images/quantum-token-logo.svg'">
+      <h1 class="text-5xl font-bold" style="background: linear-gradient(135deg, #FF8C00 0%, #00FFFF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+        🔮 QUANTUM BLOCKCHAIN PRO
+      </h1>
+    </div>
     
     <div class="grid md:grid-cols-3 gap-6 mb-6">
-      <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-        <h2 class="text-2xl text-cyan-300 mb-4">📊 Dashboard</h2>
+      <div class="p-6 rounded-lg shadow-lg" style="background: rgba(30, 58, 95, 0.3); border: 2px solid rgba(0, 255, 255, 0.3); backdrop-filter: blur(10px);">
+        <h2 class="text-2xl mb-4" style="color: #00FFFF; font-weight: bold;">📊 Dashboard</h2>
         <div class="space-y-2">
           <div>Bloques: <span id="blocks" class="text-cyan-400 font-bold">0</span></div>
           <div>Transacciones: <span id="txs" class="text-purple-400 font-bold">0</span></div>
-          <div>Tokens: <span id="tokens" class="text-green-400 font-bold">1000 QC</span></div>
+          <div class="flex items-center gap-2">
+            <img src="assets/images/quantum-token-logo.svg" alt="QC" class="w-6 h-6" onerror="this.style.display='none'">
+            <span>Tokens: <span id="tokens" class="text-green-400 font-bold">1000 QC</span></span>
+          </div>
         </div>
       </div>
       
-      <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-        <h2 class="text-2xl text-purple-300 mb-4">🎮 Controles</h2>
+      <div class="p-6 rounded-lg shadow-lg" style="background: rgba(30, 58, 95, 0.3); border: 2px solid rgba(0, 255, 255, 0.3); backdrop-filter: blur(10px);">
+        <h2 class="text-2xl mb-4" style="color: #FF8C00; font-weight: bold;">🎮 Controles</h2>
         <div class="space-y-2">
-          <button onclick="mine()" class="w-full bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded">
-            ⛏️ Minar Bloque
+          <button onclick="tx()" class="w-full px-4 py-2 rounded font-bold" style="background: linear-gradient(45deg, #FF8C00, #00FFFF); color: white; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            💸 Procesar Transacción
           </button>
-          <button onclick="tx()" class="w-full bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded">
+          <button onclick="tx()" class="w-full px-4 py-2 rounded font-bold" style="background: linear-gradient(45deg, #1E3A5F, #00FFFF); color: white; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
             💸 Nueva Transacción
           </button>
-          <button onclick="reset()" class="w-full bg-red-600 hover:bg-red-700 px-4 py-2 rounded">
+          <button onclick="reset()" class="w-full px-4 py-2 rounded font-bold" style="background: linear-gradient(45deg, #FF8C00, #1E3A5F); color: white; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
             🔄 Reset
           </button>
         </div>
       </div>
       
-      <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-        <h2 class="text-2xl text-green-300 mb-4">⚡ Estado Cuántico</h2>
+      <div class="p-6 rounded-lg shadow-lg" style="background: rgba(30, 58, 95, 0.3); border: 2px solid rgba(0, 255, 255, 0.3); backdrop-filter: blur(10px);">
+        <h2 class="text-2xl mb-4" style="color: #00FFFF; font-weight: bold;">⚡ Estado Cuántico</h2>
         <div class="space-y-2">
-          <div>Coherencia: <span id="coherence" class="text-green-400">100%</span></div>
-          <div>Entrelazamiento: <span id="entanglement" class="text-yellow-400">Activo</span></div>
-          <div>Hash Rate: <span id="hashrate" class="text-blue-400">0 H/s</span></div>
+          <div>Coherencia: <span id="coherence" style="color: #FF8C00; font-weight: bold;">100%</span></div>
+          <div>Entrelazamiento: <span id="entanglement" style="color: #00FFFF; font-weight: bold;">Activo</span></div>
+          <div>Hash Rate: <span id="hashrate" style="color: #FF8C00; font-weight: bold;">0 H/s</span></div>
         </div>
       </div>
     </div>
     
-    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-      <h2 class="text-2xl text-green-300 mb-4">📜 Log de Eventos</h2>
-      <div id="log" class="h-48 overflow-y-auto bg-black p-4 rounded text-sm font-mono space-y-1">
-        <div class="text-green-400">✅ Sistema Quantum Blockchain iniciado</div>
+    <div class="p-6 rounded-lg shadow-lg" style="background: rgba(30, 58, 95, 0.3); border: 2px solid rgba(0, 255, 255, 0.3); backdrop-filter: blur(10px);">
+      <h2 class="text-2xl mb-4" style="color: #00FFFF; font-weight: bold;">📜 Log de Eventos</h2>
+      <div id="log" class="h-48 overflow-y-auto p-4 rounded text-sm font-mono space-y-1" style="background: rgba(10, 14, 39, 0.8); border: 1px solid rgba(0, 255, 255, 0.2);">
+        <div style="color: #FF8C00; font-weight: bold;">✅ Sistema Quantum Blockchain iniciado</div>
       </div>
     </div>
   </div>
@@ -79,16 +93,15 @@
       l.scrollTop = l.scrollHeight;
     }
 
-    function mine() {
-      log('⛏️ Minando nuevo bloque cuántico...', 'text-blue-400');
+    function generateBlock() {
+      log('🔄 Generando nuevo bloque cuántico...', 'text-blue-400');
       state.hashrate = Math.floor(Math.random() * 1000) + 500;
       update();
       
       setTimeout(() => {
         state.blocks++;
-        state.tokens += 10;
         state.coherence = Math.max(85, state.coherence - Math.random() * 5);
-        log('✅ Bloque #' + state.blocks + ' minado! (+10 QC)', 'text-green-400');
+        log('✅ Bloque #' + state.blocks + ' generado exitosamente!', 'text-green-400');
         update();
         state.hashrate = 0;
         update();

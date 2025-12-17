@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎨 Quantum Theme Demo - Colores Oficiales</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/quantum-token-logo.svg">
+    <link rel="stylesheet" href="assets/quantum-theme.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: var(--quantum-bg-primary);
+            font-family: var(--quantum-font-primary);
+        }
+    </style>
+</head>
+<body class="text-white p-8 min-h-screen">
+    <div class="max-w-7xl mx-auto">
+        <!-- Header -->
+        <header class="text-center mb-16">
+            <img src="assets/images/quantum-token-logo.png" 
+                 alt="Quantum Logo" 
+                 class="w-32 h-32 mx-auto mb-6 animate-quantum-float glow-quantum-mixed"
+                 onerror="this.src='assets/images/quantum-token-logo.svg'">
+            <h1 class="text-6xl font-bold mb-4" style="font-family: var(--quantum-font-heading);">
+                <span class="quantum-text-gradient">QUANTUM THEME</span>
+            </h1>
+            <p class="text-2xl text-quantum-cyan mb-2">Sistema de Diseño Oficial</p>
+            <p class="text-quantum-orange">Basado en los colores del logo Quantum Token</p>
+        </header>
+
+        <!-- Sección de Colores -->
+        <section class="mb-16">
+            <h2 class="text-4xl font-bold text-quantum-cyan mb-8 text-center">
+                🎨 Paleta de Colores
+            </h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="card-quantum text-center">
+                    <div class="w-32 h-32 mx-auto mb-4 rounded-full animate-quantum-pulse" 
+                         style="background: var(--quantum-orange);"></div>
+                    <h3 class="text-2xl font-bold text-quantum-orange mb-2">#FF8C00</h3>
+                    <p class="text-sm text-gray-400">Naranja - Energía</p>
+                </div>
+
+                <div class="card-quantum text-center">
+                    <div class="w-32 h-32 mx-auto mb-4 rounded-full animate-quantum-pulse" 
+                         style="background: var(--quantum-blue); animation-delay: 0.5s;"></div>
+                    <h3 class="text-2xl font-bold text-quantum-blue mb-2">#1E3A5F</h3>
+                    <p class="text-sm text-gray-400">Azul - Profundidad</p>
+                </div>
+
+                <div class="card-quantum text-center">
+                    <div class="w-32 h-32 mx-auto mb-4 rounded-full animate-quantum-pulse" 
+                         style="background: var(--quantum-cyan); animation-delay: 1s;"></div>
+                    <h3 class="text-2xl font-bold text-quantum-cyan mb-2">#00FFFF</h3>
+                    <p class="text-sm text-gray-400">Cyan - Tecnología</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Botones -->
+        <section class="mb-16">
+            <h2 class="text-4xl font-bold text-quantum-orange mb-8 text-center">
+                🔘 Botones
+            </h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="card-quantum text-center space-y-4">
+                    <h3 class="text-xl font-bold text-quantum-cyan">Primarios</h3>
+                    <button class="btn-quantum-primary w-full">
+                        🔄 Generar Bloque
+                    </button>
+                    <button class="btn-quantum-primary w-full">
+                        💎 Crear NFT
+                    </button>
+                    <button class="btn-quantum-primary w-full">
+                        🚀 Validar Bloque
+                    </button>
+                </div>
+
+                <div class="card-quantum text-center space-y-4">
+                    <h3 class="text-xl font-bold text-quantum-cyan">Secundarios</h3>
+                    <button class="btn-quantum-secondary w-full">
+                        📊 Dashboard
+                    </button>
+                    <button class="btn-quantum-secondary w-full">
+                        📈 Estadísticas
+                    </button>
+                    <button class="btn-quantum-secondary w-full">
+                        🔍 Explorar
+                    </button>
+                </div>
+
+                <div class="card-quantum text-center space-y-4">
+                    <h3 class="text-xl font-bold text-quantum-cyan">Outline</h3>
+                    <button class="btn-quantum-outline w-full">
+                        ⚙️ Configurar
+                    </button>
+                    <button class="btn-quantum-outline w-full">
+                        📝 Editar
+                    </button>
+                    <button class="btn-quantum-outline w-full">
+                        🔄 Refrescar
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Tarjetas -->
+        <section class="mb-16">
+            <h2 class="text-4xl font-bold text-quantum-cyan mb-8 text-center">
+                🃏 Tarjetas y Componentes
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card-quantum">
+                    <h3 class="text-2xl font-bold text-quantum-orange mb-4">📊 Dashboard</h3>
+                    <div class="space-y-2">
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Bloques:</span>
+                            <span class="text-quantum-cyan font-bold">1,247</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Transacciones:</span>
+                            <span class="text-quantum-orange font-bold">5,891</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Hash Rate:</span>
+                            <span class="text-quantum-cyan font-bold">5.2 TH/s</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-quantum">
+                    <h3 class="text-2xl font-bold text-quantum-cyan mb-4">💰 Wallet</h3>
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="assets/images/quantum-token-logo.svg" 
+                             alt="QC" 
+                             class="w-12 h-12 glow-quantum-orange"
+                             onerror="this.innerHTML='💎'">
+                        <div>
+                            <p class="text-3xl font-bold text-quantum-orange">1,500</p>
+                            <p class="text-sm text-gray-400">QC Tokens</p>
+                        </div>
+                    </div>
+                    <button class="btn-quantum-primary w-full">Enviar</button>
+                </div>
+
+                <div class="card-quantum">
+                    <h3 class="text-2xl font-bold text-quantum-orange mb-4">⚡ Estado</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <span class="badge-quantum-cyan">Online</span>
+                            <span class="badge-quantum-orange ml-2">Activo</span>
+                        </div>
+                        <div class="text-sm text-gray-400">
+                            Coherencia: <span class="text-quantum-cyan font-bold">98.5%</span>
+                        </div>
+                        <div class="text-sm text-gray-400">
+                            Entrelazamiento: <span class="text-quantum-orange font-bold">Óptimo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Gradientes -->
+        <section class="mb-16">
+            <h2 class="text-4xl font-bold mb-8 text-center">
+                <span class="quantum-text-gradient">🌈 Gradientes</span>
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="p-8 rounded-xl text-center" style="background: var(--quantum-gradient-primary);">
+                    <h3 class="text-2xl font-bold mb-2">Gradiente Principal</h3>
+                    <p class="text-sm">Naranja → Azul → Cyan</p>
+                </div>
+
+                <div class="p-8 rounded-xl text-center" style="background: var(--quantum-gradient-reverse);">
+                    <h3 class="text-2xl font-bold mb-2">Gradiente Inverso</h3>
+                    <p class="text-sm">Cyan → Azul → Naranja</p>
+                </div>
+
+                <div class="p-8 rounded-xl text-center" style="background: var(--quantum-gradient-orange-cyan);">
+                    <h3 class="text-2xl font-bold mb-2">Naranja-Cyan</h3>
+                    <p class="text-sm">Energía + Tecnología</p>
+                </div>
+
+                <div class="p-8 rounded-xl text-center" style="background: var(--quantum-gradient-blue-cyan);">
+                    <h3 class="text-2xl font-bold mb-2">Azul-Cyan</h3>
+                    <p class="text-sm">Profundidad + Futuro</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Animaciones -->
+        <section class="mb-16">
+            <h2 class="text-4xl font-bold text-quantum-cyan mb-8 text-center">
+                ✨ Animaciones
+            </h2>
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="card-quantum text-center">
+                    <div class="text-6xl mb-4 animate-quantum-pulse">🔮</div>
+                    <p class="text-quantum-orange font-bold">Pulse</p>
+                </div>
+
+                <div class="card-quantum text-center">
+                    <div class="text-6xl mb-4 animate-quantum-glow">💎</div>
+                    <p class="text-quantum-cyan font-bold">Glow</p>
+                </div>
+
+                <div class="card-quantum text-center">
+                    <div class="text-6xl mb-4 animate-quantum-float">⚛️</div>
+                    <p class="text-quantum-orange font-bold">Float</p>
+                </div>
+
+                <div class="card-quantum text-center">
+                    <div class="text-2xl font-bold mb-4 quantum-text-gradient animate-quantum-gradient">
+                        QUANTUM
+                    </div>
+                    <p class="text-quantum-cyan font-bold">Gradient</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Formularios -->
+        <section class="mb-16">
+            <h2 class="text-4xl font-bold text-quantum-orange mb-8 text-center">
+                📝 Formularios
+            </h2>
+            <div class="card-quantum max-w-2xl mx-auto">
+                <h3 class="text-2xl font-bold text-quantum-cyan mb-6">Enviar Transacción</h3>
+                <form class="space-y-4">
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-2">Dirección del Destinatario</label>
+                        <input type="text" 
+                               class="input-quantum w-full" 
+                               placeholder="0x...">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-2">Cantidad (QC)</label>
+                        <input type="number" 
+                               class="input-quantum w-full" 
+                               placeholder="0.00">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-2">Mensaje (opcional)</label>
+                        <textarea class="input-quantum w-full" 
+                                  rows="3" 
+                                  placeholder="Agregar nota..."></textarea>
+                    </div>
+                    <div class="flex gap-4">
+                        <button type="submit" class="btn-quantum-primary flex-1">
+                            Enviar Transacción
+                        </button>
+                        <button type="reset" class="btn-quantum-outline">
+                            Limpiar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Sección de Logs -->
+        <section class="mb-16">
+            <h2 class="text-4xl font-bold text-quantum-cyan mb-8 text-center">
+                📜 Sistema de Logs
+            </h2>
+            <div class="card-quantum max-w-4xl mx-auto">
+                <h3 class="text-2xl font-bold text-quantum-orange mb-4">Actividad Reciente</h3>
+                <div style="background: var(--quantum-bg-overlay); padding: 1rem; border-radius: 0.5rem; max-height: 300px; overflow-y: auto;">
+                    <div class="space-y-2 font-mono text-sm">
+                        <div class="text-quantum-orange">✅ Bloque #1247 generado exitosamente</div>
+                        <div class="text-quantum-cyan">💎 Transacción confirmada: 150 QC</div>
+                        <div class="text-quantum-orange">🔐 Firma cuántica verificada</div>
+                        <div class="text-quantum-cyan">🌐 Nuevo nodo conectado a la red</div>
+                        <div class="text-quantum-orange">⚡ Hash rate incrementado: +2.5 TH/s</div>
+                        <div class="text-quantum-cyan">📊 Coherencia cuántica: 99.2%</div>
+                        <div class="text-quantum-orange">🎯 Algoritmo de consenso actualizado</div>
+                        <div class="text-quantum-cyan">✅ Sistema de seguridad validado</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center py-12 border-t" style="border-color: var(--quantum-border-cyan);">
+            <div class="mb-6">
+                <img src="assets/images/quantum-token-logo.svg" 
+                     alt="Quantum Logo" 
+                     class="w-16 h-16 mx-auto mb-4 glow-quantum-cyan"
+                     onerror="this.innerHTML='🔮'; this.style.fontSize='4rem'">
+            </div>
+            <p class="text-quantum-cyan mb-2 text-lg font-bold">
+                Quantum Blockchain Theme
+            </p>
+            <p class="text-gray-400 mb-4">
+                Sistema de diseño oficial basado en el logo Quantum Token
+            </p>
+            <div class="flex justify-center gap-4 mb-4">
+                <span class="badge-quantum-orange">Naranja #FF8C00</span>
+                <span class="badge-quantum-blue">Azul #1E3A5F</span>
+                <span class="badge-quantum-cyan">Cyan #00FFFF</span>
+            </div>
+            <p class="text-sm text-gray-500">
+                © 2025 Evolution Style - Quantum Blockchain Project
+            </p>
+            <p class="text-xs text-gray-600 mt-2">
+                Consulta <code>assets/THEME-GUIDE.md</code> para documentación completa
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        console.log('🎨 Quantum Theme Demo cargado');
+        console.log('Colores oficiales:');
+        console.log('  Naranja: #FF8C00');
+        console.log('  Azul: #1E3A5F');
+        console.log('  Cyan: #00FFFF');
+    </script>
+</body>
+</html>

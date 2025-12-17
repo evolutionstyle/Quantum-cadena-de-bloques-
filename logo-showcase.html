@@ -1,0 +1,254 @@
+/**
+ * 🎨 Logo Showcase - Demostración del logo del token cuántico
+ * Página de demostración para mostrar todas las variaciones del logo
+ */
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎨 Quantum Token Logo Showcase</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/quantum-token-logo.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .logo-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(0, 245, 255, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .logo-card:hover {
+            border-color: rgba(255, 140, 0, 0.8);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.3);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #FF8C00 0%, #1E3A5F 50%, #00FFFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        .rotate {
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .glow {
+            filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.8));
+        }
+    </style>
+</head>
+<body class="text-white p-8">
+    <div class="max-w-7xl mx-auto">
+        <!-- Header -->
+        <header class="text-center mb-16">
+            <img src="assets/images/quantum-token-logo.svg" 
+                 alt="Quantum Token Logo" 
+                 class="w-48 h-48 mx-auto mb-8 pulse glow"
+                 onerror="this.innerHTML='🔮'; this.style.fontSize='12rem'">
+            <h1 class="text-6xl font-bold gradient-text mb-4">
+                Quantum Token Logo
+            </h1>
+            <p class="text-2xl text-cyan-300 mb-2">Official Brand Assets</p>
+            <p class="text-gray-400">El logo que representa el futuro de la blockchain cuántica</p>
+        </header>
+
+        <!-- Logo Principal -->
+        <section class="mb-16">
+            <h2 class="text-4xl font-bold text-cyan-400 mb-8 text-center">
+                🎨 Logo Principal
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="logo-card p-8 rounded-2xl text-center">
+                    <h3 class="text-2xl font-bold text-orange-400 mb-6">Versión Clara</h3>
+                    <div class="bg-white p-8 rounded-xl mb-4">
+                        <img src="assets/images/quantum-token-logo.svg" 
+                             alt="Logo en fondo claro" 
+                             class="w-40 h-40 mx-auto"
+                             onerror="this.style.display='none'">
+                    </div>
+                    <p class="text-sm text-gray-400">Para fondos claros</p>
+                </div>
+
+                <div class="logo-card p-8 rounded-2xl text-center">
+                    <h3 class="text-2xl font-bold text-cyan-400 mb-6">Versión Oscura</h3>
+                    <div class="bg-black p-8 rounded-xl mb-4">
+                        <img src="assets/images/quantum-token-logo.svg" 
+                             alt="Logo en fondo oscuro" 
+                             class="w-40 h-40 mx-auto"
+                             onerror="this.style.display='none'">
+                    </div>
+                    <p class="text-sm text-gray-400">Para fondos oscuros</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tamaños -->
+        <section class="mb-16">
+            <h2 class="text-4xl font-bold text-purple-400 mb-8 text-center">
+                📏 Tamaños Disponibles
+            </h2>
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="logo-card p-6 rounded-xl text-center">
+                    <img src="assets/images/quantum-token-logo.svg" 
+                         alt="16x16" 
+                         class="w-4 h-4 mx-auto mb-3"
+                         onerror="this.style.display='none'">
+                    <p class="text-cyan-400 font-bold">16x16</p>
+                    <p class="text-xs text-gray-400">Small</p>
+                </div>
+
+                <div class="logo-card p-6 rounded-xl text-center">
+                    <img src="assets/images/quantum-token-logo.svg" 
+                         alt="32x32" 
+                         class="w-8 h-8 mx-auto mb-3"
+                         onerror="this.style.display='none'">
+                    <p class="text-cyan-400 font-bold">32x32</p>
+                    <p class="text-xs text-gray-400">Medium</p>
+                </div>
+
+                <div class="logo-card p-6 rounded-xl text-center">
+                    <img src="assets/images/quantum-token-logo.svg" 
+                         alt="64x64" 
+                         class="w-16 h-16 mx-auto mb-3"
+                         onerror="this.style.display='none'">
+                    <p class="text-cyan-400 font-bold">64x64</p>
+                    <p class="text-xs text-gray-400">Large</p>
+                </div>
+
+                <div class="logo-card p-6 rounded-xl text-center">
+                    <img src="assets/images/quantum-token-logo.svg" 
+                         alt="128x128" 
+                         class="w-32 h-32 mx-auto mb-3"
+                         onerror="this.style.display='none'">
+                    <p class="text-cyan-400 font-bold">128x128</p>
+                    <p class="text-xs text-gray-400">XLarge</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Colores -->
+        <section class="mb-16">
+            <h2 class="text-4xl font-bold text-orange-400 mb-8 text-center">
+                🎨 Paleta de Colores
+            </h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="logo-card p-6 rounded-xl text-center">
+                    <div class="w-24 h-24 mx-auto mb-4 rounded-full" 
+                         style="background: #FF8C00;"></div>
+                    <p class="text-xl font-bold text-orange-400">#FF8C00</p>
+                    <p class="text-sm text-gray-400">Naranja - Energía</p>
+                </div>
+
+                <div class="logo-card p-6 rounded-xl text-center">
+                    <div class="w-24 h-24 mx-auto mb-4 rounded-full" 
+                         style="background: #1E3A5F;"></div>
+                    <p class="text-xl font-bold text-blue-400">#1E3A5F</p>
+                    <p class="text-sm text-gray-400">Azul - Profundidad</p>
+                </div>
+
+                <div class="logo-card p-6 rounded-xl text-center">
+                    <div class="w-24 h-24 mx-auto mb-4 rounded-full" 
+                         style="background: #00FFFF;"></div>
+                    <p class="text-xl font-bold text-cyan-400">#00FFFF</p>
+                    <p class="text-sm text-gray-400">Cyan - Tecnología</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Animaciones -->
+        <section class="mb-16">
+            <h2 class="text-4xl font-bold text-green-400 mb-8 text-center">
+                ✨ Efectos y Animaciones
+            </h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="logo-card p-8 rounded-xl text-center">
+                    <img src="assets/images/quantum-token-logo.svg" 
+                         alt="Pulse" 
+                         class="w-32 h-32 mx-auto mb-4 pulse"
+                         onerror="this.style.display='none'">
+                    <p class="text-cyan-400 font-bold">Pulse</p>
+                    <p class="text-xs text-gray-400">Efecto de latido</p>
+                </div>
+
+                <div class="logo-card p-8 rounded-xl text-center">
+                    <img src="assets/images/quantum-token-logo.svg" 
+                         alt="Rotate" 
+                         class="w-32 h-32 mx-auto mb-4 rotate"
+                         onerror="this.style.display='none'">
+                    <p class="text-purple-400 font-bold">Rotate</p>
+                    <p class="text-xs text-gray-400">Rotación continua</p>
+                </div>
+
+                <div class="logo-card p-8 rounded-xl text-center">
+                    <img src="assets/images/quantum-token-logo.svg" 
+                         alt="Glow" 
+                         class="w-32 h-32 mx-auto mb-4 glow"
+                         onerror="this.style.display='none'">
+                    <p class="text-orange-400 font-bold">Glow</p>
+                    <p class="text-xs text-gray-400">Efecto de brillo</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Uso -->
+        <section class="mb-16">
+            <h2 class="text-4xl font-bold text-yellow-400 mb-8 text-center">
+                💻 Guía de Uso
+            </h2>
+            <div class="logo-card p-8 rounded-xl">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-cyan-400 mb-4">HTML</h3>
+                        <pre class="bg-black p-4 rounded text-sm overflow-x-auto"><code class="text-green-400">&lt;img src="assets/images/quantum-token-logo.svg" 
+     alt="Quantum Token" 
+     class="w-16 h-16"&gt;</code></pre>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-bold text-purple-400 mb-4">CSS</h3>
+                        <pre class="bg-black p-4 rounded text-sm overflow-x-auto"><code class="text-green-400">.logo {
+  background-image: 
+    url('assets/images/quantum-token-logo.svg');
+  background-size: contain;
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center py-8 border-t border-cyan-900">
+            <p class="text-gray-400 mb-2">
+                © 2025 Evolution Style - Quantum Blockchain Project
+            </p>
+            <p class="text-sm text-gray-500">
+                Todos los derechos reservados. Uso exclusivo del proyecto Quantum Blockchain.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

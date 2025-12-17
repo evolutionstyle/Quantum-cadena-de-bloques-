@@ -1,5 +1,17 @@
 # Tecnología y Seguridad en la Cadena de Bloques Cuántica
 
+<div align="center">
+  <img src="assets/images/quantum-token-logo.svg" alt="Quantum Token Logo" width="200" height="200">
+  
+  ### 🔮 El Futuro de la Blockchain es Cuántico
+  
+  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+  [![Version](https://img.shields.io/badge/version-2.0.0-cyan.svg)](package.json)
+  [![Quantum](https://img.shields.io/badge/quantum-enabled-orange.svg)](#)
+</div>
+
+---
+
 ## Introducción
 
 La evolución de la computación cuántica está generando un cambio de paradigma en múltiples sectores, y uno de los más prometedores es el de las cadenas de bloques (blockchain). La cadena de bloques cuántica combina los principios de la tecnología blockchain tradicional con la potencia y las propiedades únicas de la computación cuántica, ofreciendo nuevas oportunidades y desafíos, especialmente en el área de la seguridad.
@@ -49,6 +61,18 @@ La cadena de bloques cuántica se basa en los mismos principios de descentraliza
 La cadena de bloques cuántica promete revolucionar sectores como las finanzas, la gestión de identidades, el Internet de las Cosas (IoT) y la comunicación segura. Sin embargo, la adopción masiva requiere superar retos técnicos y desarrollar normativas específicas.
 
 ---
+
+## 🎨 Identidad Visual
+
+### Colores Oficiales del Token Cuántico
+- 🟠 **Naranja** `#FF8C00` - Energía e innovación
+- 🔵 **Azul** `#1E3A5F` - Profundidad cuántica  
+- 💠 **Cyan** `#00FFFF` - Tecnología del futuro
+
+El logo y sistema de colores están completamente integrados. Ver:
+- 📖 [Guía del Tema](assets/THEME-GUIDE.md)
+- 🎨 [Demo Visual](theme-demo.html)
+- 🖼️ [Showcase del Logo](logo-showcase.html)
 
 ## Conclusión
 

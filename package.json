@@ -19,7 +19,7 @@
     "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
     "format": "prettier --write .",
     "quantum:simulate": "tsx src/quantum/simulator.ts",
-    "blockchain:mine": "tsx src/blockchain/miner.ts",
+    "blockchain:validate": "tsx src/blockchain/validator.ts",
     "demo": "tsx src/demo/quantum-demo.ts",
     "quantum:demo": "npm run build && npm run serve",
     "dapp:start": "npm run dev"
