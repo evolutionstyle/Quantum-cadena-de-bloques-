@@ -404,6 +404,9 @@
             <!-- Navigation Tabs -->
             <div class="nav-tabs mb-8">
                 <div class="nav-tab active" onclick="switchTab('dashboard')">📊 Dashboard</div>
+                <div class="nav-tab" onclick="switchTab('wallet')">👛 Wallet</div>
+                <div class="nav-tab" onclick="switchTab('tokenmarket')">🪙 Token Market</div>
+                <div class="nav-tab" onclick="switchTab('smartcontracts')">📜 Smart Contracts</div>
                 <div class="nav-tab" onclick="switchTab('analytics')">📈 Analytics</div>
                 <div class="nav-tab" onclick="switchTab('transactions')">💰 Transactions</div>
                 <div class="nav-tab" onclick="switchTab('defi')">🏦 DeFi</div>
@@ -520,6 +523,424 @@
                         </h3>
                         <div class="terminal" id="terminal">
                             <!-- Terminal output will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wallet Section -->
+            <div id="wallet" class="tab-content" style="display: none;">
+                <div class="glass-card p-8 mb-6">
+                    <h2 class="text-3xl font-bold gradient-text mb-6">👛 Quantum Wallet</h2>
+                    
+                    <!-- Balance -->
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div class="glass-card p-6 text-center">
+                            <div class="text-sm text-gray-400 mb-2">Balance QTK</div>
+                            <div class="text-3xl font-bold gradient-text">12,458.50</div>
+                            <div class="text-sm text-green-400 mt-2">≈ $124,585.00 USD</div>
+                        </div>
+                        <div class="glass-card p-6 text-center">
+                            <div class="text-sm text-gray-400 mb-2">Staked</div>
+                            <div class="text-3xl font-bold" style="color: #00FFFF;">5,000.00</div>
+                            <div class="text-sm text-cyan-400 mt-2">APY: 24.5%</div>
+                        </div>
+                        <div class="glass-card p-6 text-center">
+                            <div class="text-sm text-gray-400 mb-2">Recompensas</div>
+                            <div class="text-3xl font-bold" style="color: #FF8C00;">127.34</div>
+                            <div class="text-sm text-orange-400 mt-2">+$1,273.40 USD</div>
+                        </div>
+                    </div>
+
+                    <!-- Dirección de Cartera para Cobros -->
+                    <div class="glass-card p-6 mb-6">
+                        <h3 class="text-xl font-bold mb-4" style="color: #00FFFF;">💳 Dirección para Recibir Pagos</h3>
+                        <div class="bg-black/40 p-4 rounded-lg border-2 border-cyan-500/30 mb-4">
+                            <div class="text-xs text-gray-400 mb-2">Tu dirección Quantum (QRC-20)</div>
+                            <div class="font-mono text-lg break-all" style="color: #00FFFF;" id="walletAddress">0xQTK742a5F8b3E9D2c4A1B6f8E3D5C7A9B2F4E6D8</div>
+                        </div>
+                        <div class="flex gap-4">
+                            <button class="btn-primary flex-1" onclick="alert('✅ Dirección copiada al portapapeles!')">📋 Copiar Dirección</button>
+                            <button class="btn-secondary flex-1" onclick="alert('📱 Mostrando código QR...')">📱 Mostrar QR</button>
+                        </div>
+                    </div>
+
+                    <!-- Enviar/Recibir -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="glass-card p-6">
+                            <h3 class="text-xl font-bold mb-4 gradient-text">📤 Enviar Tokens</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm mb-2">Dirección Destino</label>
+                                    <input type="text" class="w-full bg-black/30 border-2 border-cyan-500/30 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none transition" placeholder="0x...">
+                                </div>
+                                <div>
+                                    <label class="block text-sm mb-2">Cantidad QTK</label>
+                                    <input type="number" class="w-full bg-black/30 border-2 border-cyan-500/30 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none transition" placeholder="0.00">
+                                </div>
+                                <button class="btn-primary w-full">⚡ Enviar</button>
+                            </div>
+                        </div>
+                        <div class="glass-card p-6">
+                            <h3 class="text-xl font-bold mb-4" style="color: #00FFFF;">📥 Recibir Tokens</h3>
+                            <div class="bg-black/40 p-8 rounded-lg text-center border-2 border-cyan-500/30 mb-4">
+                                <div class="text-6xl mb-4">📱</div>
+                                <div class="text-sm text-gray-400">Código QR</div>
+                                <div class="text-xs text-cyan-400 mt-2">Escanear para enviar QTK</div>
+                            </div>
+                            <button class="btn-secondary w-full">💾 Descargar QR</button>
+                        </div>
+                    </div>
+
+                    <!-- Historial de Transacciones -->
+                    <div class="glass-card p-6 mt-6">
+                        <h3 class="text-xl font-bold mb-4" style="color: #FF8C00;">📜 Historial Reciente</h3>
+                        <div class="space-y-3">
+                            <div class="bg-black/30 p-4 rounded-lg flex justify-between items-center">
+                                <div>
+                                    <div class="font-semibold text-green-400">+ 500.00 QTK</div>
+                                    <div class="text-xs text-gray-400">Recibido de 0x...3D5C</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-sm">$5,000.00</div>
+                                    <div class="text-xs text-gray-400">Hace 2 horas</div>
+                                </div>
+                            </div>
+                            <div class="bg-black/30 p-4 rounded-lg flex justify-between items-center">
+                                <div>
+                                    <div class="font-semibold text-red-400">- 150.00 QTK</div>
+                                    <div class="text-xs text-gray-400">Enviado a 0x...B2F4</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-sm">$1,500.00</div>
+                                    <div class="text-xs text-gray-400">Hace 5 horas</div>
+                                </div>
+                            </div>
+                            <div class="bg-black/30 p-4 rounded-lg flex justify-between items-center">
+                                <div>
+                                    <div class="font-semibold text-cyan-400">Staking Reward</div>
+                                    <div class="text-xs text-gray-400">+ 12.34 QTK</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-sm">$123.40</div>
+                                    <div class="text-xs text-gray-400">Hace 1 día</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Token Market Section -->
+            <div id="tokenmarket" class="tab-content" style="display: none;">
+                <div class="glass-card p-8">
+                    <h2 class="text-3xl font-bold gradient-text mb-6">🪙 Mercado de Tokens</h2>
+                    
+                    <!-- Market Stats -->
+                    <div class="grid md:grid-cols-4 gap-6 mb-8">
+                        <div class="glass-card p-4 text-center">
+                            <div class="text-sm text-gray-400">Precio QTK</div>
+                            <div class="text-2xl font-bold" style="color: #00FFFF;">$10.00</div>
+                            <div class="text-xs text-green-400">+5.2%</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="text-sm text-gray-400">Market Cap</div>
+                            <div class="text-2xl font-bold" style="color: #FF8C00;">$250M</div>
+                            <div class="text-xs text-cyan-400">Rank #45</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="text-sm text-gray-400">Volumen 24h</div>
+                            <div class="text-2xl font-bold" style="color: #00FF88;">$12.4M</div>
+                            <div class="text-xs text-yellow-400">↑ 18%</div>
+                        </div>
+                        <div class="glass-card p-4 text-center">
+                            <div class="text-sm text-gray-400">Circulación</div>
+                            <div class="text-2xl font-bold" style="color: #FFD700;">25M</div>
+                            <div class="text-xs text-gray-400">/ 100M</div>
+                        </div>
+                    </div>
+
+                    <!-- Buy/Sell Interface -->
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div class="glass-card p-6">
+                            <h3 class="text-xl font-bold mb-4 gradient-text">💰 Comprar QTK</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm mb-2">Cantidad a Comprar</label>
+                                    <input type="number" id="buyAmount" class="w-full bg-black/30 border-2 border-cyan-500/30 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none transition" placeholder="100" value="100">
+                                </div>
+                                <div>
+                                    <label class="block text-sm mb-2">Método de Pago</label>
+                                    <select class="w-full bg-black/30 border-2 border-cyan-500/30 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none transition">
+                                        <option>💳 Tarjeta de Crédito</option>
+                                        <option>🏦 Transferencia Bancaria</option>
+                                        <option>💵 PayPal</option>
+                                        <option>₿ Bitcoin</option>
+                                        <option>Ξ Ethereum</option>
+                                    </select>
+                                </div>
+                                <div class="bg-black/40 p-4 rounded-lg border border-cyan-500/30">
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-sm">Precio por token:</span>
+                                        <span class="font-bold">$10.00</span>
+                                    </div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-sm">Fee de transacción:</span>
+                                        <span class="font-bold">2.5%</span>
+                                    </div>
+                                    <div class="border-t border-cyan-500/20 pt-2 mt-2">
+                                        <div class="flex justify-between">
+                                            <span class="font-bold">Total a Pagar:</span>
+                                            <span class="text-xl font-bold gradient-text" id="buyTotal">$1,025.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn-primary w-full">🛒 Comprar Ahora</button>
+                            </div>
+                        </div>
+                        <div class="glass-card p-6">
+                            <h3 class="text-xl font-bold mb-4" style="color: #FF8C00;">💸 Vender QTK</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm mb-2">Cantidad a Vender</label>
+                                    <input type="number" id="sellAmount" class="w-full bg-black/30 border-2 border-orange-500/30 rounded-lg px-4 py-3 focus:border-orange-500 focus:outline-none transition" placeholder="100" value="100">
+                                    <div class="text-xs text-gray-400 mt-1">Balance disponible: 12,458.50 QTK</div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm mb-2">Recibir en</label>
+                                    <select class="w-full bg-black/30 border-2 border-orange-500/30 rounded-lg px-4 py-3 focus:border-orange-500 focus:outline-none transition">
+                                        <option>💵 USD (Cuenta Bancaria)</option>
+                                        <option>💳 PayPal</option>
+                                        <option>₿ Bitcoin</option>
+                                        <option>Ξ Ethereum</option>
+                                        <option>💲 USDT (Stablecoin)</option>
+                                    </select>
+                                </div>
+                                <div class="bg-black/40 p-4 rounded-lg border border-orange-500/30">
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-sm">Precio por token:</span>
+                                        <span class="font-bold">$10.00</span>
+                                    </div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-sm">Fee de transacción:</span>
+                                        <span class="font-bold">1.5%</span>
+                                    </div>
+                                    <div class="border-t border-orange-500/20 pt-2 mt-2">
+                                        <div class="flex justify-between">
+                                            <span class="font-bold">Total a Recibir:</span>
+                                            <span class="text-xl font-bold" style="color: #FF8C00;" id="sellTotal">$985.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn-secondary w-full" style="border-color: #FF8C00; color: #FF8C00;">💰 Vender Ahora</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Order Book -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="glass-card p-6">
+                            <h3 class="text-lg font-bold mb-4 text-green-400">📗 Órdenes de Compra</h3>
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-sm bg-green-500/10 p-2 rounded">
+                                    <span>$10.05</span>
+                                    <span>250 QTK</span>
+                                    <span class="text-gray-400">$2,512.50</span>
+                                </div>
+                                <div class="flex justify-between text-sm bg-green-500/10 p-2 rounded">
+                                    <span>$10.02</span>
+                                    <span>500 QTK</span>
+                                    <span class="text-gray-400">$5,010.00</span>
+                                </div>
+                                <div class="flex justify-between text-sm bg-green-500/10 p-2 rounded">
+                                    <span>$10.00</span>
+                                    <span>1,200 QTK</span>
+                                    <span class="text-gray-400">$12,000.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glass-card p-6">
+                            <h3 class="text-lg font-bold mb-4 text-red-400">📕 Órdenes de Venta</h3>
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-sm bg-red-500/10 p-2 rounded">
+                                    <span>$10.10</span>
+                                    <span>180 QTK</span>
+                                    <span class="text-gray-400">$1,818.00</span>
+                                </div>
+                                <div class="flex justify-between text-sm bg-red-500/10 p-2 rounded">
+                                    <span>$10.15</span>
+                                    <span>420 QTK</span>
+                                    <span class="text-gray-400">$4,263.00</span>
+                                </div>
+                                <div class="flex justify-between text-sm bg-red-500/10 p-2 rounded">
+                                    <span>$10.20</span>
+                                    <span>800 QTK</span>
+                                    <span class="text-gray-400">$8,160.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Smart Contracts Section -->
+            <div id="smartcontracts" class="tab-content" style="display: none;">
+                <div class="glass-card p-8">
+                    <h2 class="text-3xl font-bold gradient-text mb-6">📜 Contratos Inteligentes Cuánticos</h2>
+                    
+                    <!-- Contract Templates -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-4" style="color: #00FFFF;">🎯 Plantillas de Contratos</h3>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="glass-card p-6 cursor-pointer hover:border-cyan-500">
+                                <div class="text-4xl mb-3">💰</div>
+                                <h4 class="font-bold mb-2">Pago Automático</h4>
+                                <p class="text-sm text-gray-400">Pagos programados y recurrentes</p>
+                            </div>
+                            <div class="glass-card p-6 cursor-pointer hover:border-cyan-500">
+                                <div class="text-4xl mb-3">🔒</div>
+                                <h4 class="font-bold mb-2">Escrow Cuántico</h4>
+                                <p class="text-sm text-gray-400">Depósito en garantía seguro</p>
+                            </div>
+                            <div class="glass-card p-6 cursor-pointer hover:border-cyan-500">
+                                <div class="text-4xl mb-3">🔑</div>
+                                <h4 class="font-bold mb-2">Multi-Firma</h4>
+                                <p class="text-sm text-gray-400">Requiere múltiples aprobaciones</p>
+                            </div>
+                            <div class="glass-card p-6 cursor-pointer hover:border-cyan-500">
+                                <div class="text-4xl mb-3">🪙</div>
+                                <h4 class="font-bold mb-2">Token QRC-20</h4>
+                                <p class="text-sm text-gray-400">Crear tu propio token</p>
+                            </div>
+                            <div class="glass-card p-6 cursor-pointer hover:border-cyan-500">
+                                <div class="text-4xl mb-3">🎨</div>
+                                <h4 class="font-bold mb-2">NFT Cuántico</h4>
+                                <p class="text-sm text-gray-400">Coleccionables únicos</p>
+                            </div>
+                            <div class="glass-card p-6 cursor-pointer hover:border-cyan-500">
+                                <div class="text-4xl mb-3">🏛️</div>
+                                <h4 class="font-bold mb-2">DAO Governance</h4>
+                                <p class="text-sm text-gray-400">Organización descentralizada</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Active Contracts -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-4" style="color: #FF8C00;">⚡ Contratos Activos</h3>
+                        <div class="space-y-4">
+                            <div class="glass-card p-6">
+                                <div class="flex justify-between items-start mb-4">
+                                    <div>
+                                        <h4 class="font-bold text-lg gradient-text">Pago Mensual Automatizado</h4>
+                                        <p class="text-sm text-gray-400">Contrato #QC-2025-0042</p>
+                                    </div>
+                                    <div class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-xs font-bold">
+                                        ✓ ACTIVO
+                                    </div>
+                                </div>
+                                <div class="grid md:grid-cols-4 gap-4 mb-4">
+                                    <div>
+                                        <div class="text-xs text-gray-400">Monto</div>
+                                        <div class="font-bold">500 QTK</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-gray-400">Frecuencia</div>
+                                        <div class="font-bold">Mensual</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-gray-400">Próximo Pago</div>
+                                        <div class="font-bold">25 Dic 2025</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-gray-400">Balance</div>
+                                        <div class="font-bold text-cyan-400">2,500 QTK</div>
+                                    </div>
+                                </div>
+                                <div class="flex gap-3">
+                                    <button class="btn-secondary text-sm">Ver Detalles</button>
+                                    <button class="btn-secondary text-sm" style="border-color: #FF8C00; color: #FF8C00;">Modificar</button>
+                                    <button class="btn-secondary text-sm" style="border-color: #ff4444; color: #ff4444;">Cancelar</button>
+                                </div>
+                            </div>
+
+                            <div class="glass-card p-6">
+                                <div class="flex justify-between items-start mb-4">
+                                    <div>
+                                        <h4 class="font-bold text-lg" style="color: #00FFFF;">Escrow - Compra de Servicio</h4>
+                                        <p class="text-sm text-gray-400">Contrato #QC-2025-0038</p>
+                                    </div>
+                                    <div class="bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded-full text-xs font-bold">
+                                        ⏳ PENDIENTE
+                                    </div>
+                                </div>
+                                <div class="grid md:grid-cols-4 gap-4 mb-4">
+                                    <div>
+                                        <div class="text-xs text-gray-400">Monto Bloqueado</div>
+                                        <div class="font-bold">1,500 QTK</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-gray-400">Vendedor</div>
+                                        <div class="font-bold text-xs">0x...F4E6</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-gray-400">Vencimiento</div>
+                                        <div class="font-bold">20 Dic 2025</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-gray-400">Árbitro</div>
+                                        <div class="font-bold">Sistema IA</div>
+                                    </div>
+                                </div>
+                                <div class="flex gap-3">
+                                    <button class="btn-primary text-sm">✓ Liberar Fondos</button>
+                                    <button class="btn-secondary text-sm" style="border-color: #ff4444; color: #ff4444;">⚠️ Disputar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Deploy New Contract -->
+                    <div class="glass-card p-6">
+                        <h3 class="text-xl font-bold mb-4 gradient-text">🚀 Desplegar Nuevo Contrato</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm mb-2">Tipo de Contrato</label>
+                                <select class="w-full bg-black/30 border-2 border-cyan-500/30 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none transition">
+                                    <option>💰 Pago Automático</option>
+                                    <option>🔒 Escrow Cuántico</option>
+                                    <option>🔑 Multi-Firma</option>
+                                    <option>🪙 Token QRC-20</option>
+                                    <option>🎨 NFT Cuántico</option>
+                                    <option>🏛️ DAO Governance</option>
+                                </select>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm mb-2">Nombre del Contrato</label>
+                                    <input type="text" class="w-full bg-black/30 border-2 border-cyan-500/30 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none transition" placeholder="Mi Contrato Cuántico">
+                                </div>
+                                <div>
+                                    <label class="block text-sm mb-2">Gas Limit</label>
+                                    <input type="number" class="w-full bg-black/30 border-2 border-cyan-500/30 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none transition" placeholder="50000" value="50000">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm mb-2">Parámetros (JSON)</label>
+                                <textarea class="w-full bg-black/30 border-2 border-cyan-500/30 rounded-lg px-4 py-3 focus:border-cyan-500 focus:outline-none transition font-mono text-sm" rows="6" placeholder='{
+  "amount": 1000,
+  "recipient": "0x...",
+  "frequency": "monthly"
+}'></textarea>
+                            </div>
+                            <div class="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="text-yellow-400">⚠️</span>
+                                    <span class="font-bold text-yellow-400">Costo Estimado de Deploy</span>
+                                </div>
+                                <div class="text-sm text-gray-300">Gas: 0.5 QTK (~$5.00) | Verificación Cuántica: 0.1 QTK</div>
+                            </div>
+                            <button class="btn-primary w-full">🚀 Desplegar Contrato en Quantum Network</button>
                         </div>
                     </div>
                 </div>
