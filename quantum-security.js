@@ -16,6 +16,7 @@ class QuantumSecurityCore {
         this.aiLearningEnabled = true;
         this.detectedThreats = [];
         this.blockedAttacks = 0;
+        this.threatScanInterval = null;
         this.initializeSecurity();
     }
 
@@ -51,7 +52,7 @@ class QuantumSecurityCore {
         };
         
         // Simulate real-time threat scanning
-        setInterval(() => {
+        this.threatScanInterval = setInterval(() => {
             this.performThreatScan();
         }, 5000);
         
@@ -103,7 +104,10 @@ class QuantumSecurityCore {
                 action: 'ANALYZING'
             };
 
-            this.detectedThreats.unshift(threat);
+            this.detectedThreats.push(threat);
+            if (this.detectedThreats.length > 5) {
+                this.detectedThreats.shift();
+            }
             this.analyzeThreat(threat);
             this.updateSecurityDisplay();
         }
@@ -131,7 +135,7 @@ class QuantumSecurityCore {
             aiLearning: this.aiLearningEnabled,
             threatsDetected: this.detectedThreats.length,
             attacksBlocked: this.blockedAttacks,
-            recentThreats: this.detectedThreats.slice(0, 5)
+            recentThreats: this.detectedThreats.slice(-5).reverse()
         };
     }
 
@@ -154,6 +158,14 @@ class QuantumSecurityCore {
         this.securityStatus = 'ACTIVE';
         console.log('🔄 Security System Reset');
         this.updateSecurityDisplay();
+    }
+
+    cleanup() {
+        if (this.threatScanInterval) {
+            clearInterval(this.threatScanInterval);
+            this.threatScanInterval = null;
+            console.log('🧹 Security system cleaned up');
+        }
     }
 }
 
